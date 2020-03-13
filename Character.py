@@ -1,4 +1,5 @@
 import random
+import writer
 
 class Character:
 	def __init_(self):
@@ -8,8 +9,10 @@ class Character:
 		self.race = "Dwarf"
 		self.alignment = "LN"
 		self.background = "Mercenary"
+		self.hitDie = 8
 		self.hp = 12
-		self.proficiency = 1
+		self.proficiency = 2
+		self.speed = 20
 		self.silly = None
 	
 	def setAbilities(self):
@@ -72,5 +75,65 @@ class Character:
 			else:
 				raceList = ["Human"]
 		self.race = random.choice(raceList)
+	
+	def setHP(self):
+		if self.characterClass == "Barbarian":
+			self.hitDie = 12
+		elif self.characterClass == "Bard":
+			self.hitDie = 8
+		elif self.characterClass == "Cleric":
+			self.hitDie = 8
+		elif self.characterClass == "Druid":
+			self.hitDie = 8
+		elif self.characterClass == "Fighter":
+			self.hitDie = 10
+		elif self.characterClass == "Monk":
+			self.hitDie = 8
+		elif self.characterClass == "Paladin":
+			self.hitDie = 10
+		elif self.characterClass == "Ranger":
+			self.hitDie = 10
+		elif self.characterClass == "Rogue":
+			self.hitDie = 8
+		elif self.characterClass == "Sorceror":
+			self.hitDie = 6
+		elif self.characterClass == "Warlock":
+			self.hitDie = 8
+		elif self.characterClass == "Wizard":
+			self.hitDie = 6
 		
+		self.hp = self.hitDie + writer.abilityBonus(self.abilities[2])
+		
+	def setAlignment(self):
+		alignment = ["L", "G"]
+		if self.characterClass == "Barbarian":
+			alignment[0] = "C"
+			alignment[1] = random.choice(["G", "N"])
+		elif self.characterClass == "Bard":
+			alignment[0] = "C"
+			alignment[1] = random.choice(["G", "N"])
+		elif self.characterClass == "Paladin":
+			alignment[0] = "L"
+			alignment[1] = random.choice(["G", "N"])
+		elif self.characterClass == "Rogue":
+			alignment[0] = "C"
+			alignment[1] = random.choice(["G", "N"])
+		else:	
+			alignment[0] = random.choice(["L", "N", "C"])
+			alignment[1] = random.choice(["G", "N"])
+			
+		if random.randint(1, 100) <= 2:
+			alignment[2] = "E"
+			
+		self.alignment = alignment
+	
+	def setSpeed(self):
+	#to do: include armor in calculation
+		if self.race == "Gnome" or self.race == "Halfling" or self.race == "Dwarf":
+			self.speed = 25
+		elif self.race == "Tiefling" or self.race == "Half-Orc" or self.race == "Half-Elf" or self.race == "Dragonborn" or self.race == "Human" or self.race == "Elf":
+			self.speed = 30
+		else:
+			self.speed = 30
+
 			
