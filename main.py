@@ -2,16 +2,25 @@ from PIL import Image
 from PIL import ImageFont
 from PIL import ImageDraw 
 import writer
+import random
 from Character import Character
+
 
 """
 To do next time:
-Saving throws based on class
 skills
+equipment
+attacks
+spells
+
+Tweaks to make:
+make a "silly" last name list
+tweak name lists
 """
 char = Character()
 img = Image.open(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\blankSheet.png")
-char.name = "Baldren Hellhammer"
+char.gender = random.choice(["M", "F", "M", "F", "M", "F", "M", "F", "M", "F", "N"])
+char.setName()
 char.setAbilities()
 char.setClass(char.abilities)
 char.setRace(char.characterClass)
@@ -28,5 +37,6 @@ writer.writeAlignment(img, char.alignment)
 writer.writeInitiative(img, char.abilities[1])
 writer.writeSpeed(img, char.speed)
 writer.writeProficiency(img, 2)
+writer.writeSavingThrows(img, char)
 img.save(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\newSheet.png")
-print(char.silly)
+print(char.gender)

@@ -1,10 +1,12 @@
 import random
 import writer
+import fantasy_name_generator
 
 class Character:
 	def __init_(self):
 		self.abilities = None
-		self.name = "Baldr Hellhammer"
+		self.name = None
+		self.gender = None
 		self.characterClass = "Fighter"
 		self.race = "Dwarf"
 		self.alignment = "LN"
@@ -14,6 +16,14 @@ class Character:
 		self.proficiency = 2
 		self.speed = 20
 		self.silly = None
+	
+	def setName(self):
+		if self.gender == "M":
+			self.name = fantasy_name_generator.name_builder(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\first_name_male.txt", r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\last_name.txt")
+		elif self.gender == "F":
+			self.name = fantasy_name_generator.name_builder(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\first_name_female.txt", r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\last_name.txt")
+		else:
+			self.name = fantasy_name_generator.name_builder(random.choice([r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\first_name_male.txt", r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\first_name_female.txt"]), r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\last_name.txt")
 	
 	def setAbilities(self):
 		self.abilities = [0, 0, 0, 0, 0, 0]
