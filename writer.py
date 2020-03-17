@@ -185,3 +185,155 @@ def writeSavingThrows(image, character):
 	else:
 		font = ImageFont.truetype(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\Verdana.ttf",40)
 		draw.text((475, 1130), writeAbilityBonus(character.abilities[5]),(0,0,0), font=font)
+		
+def writeSkills(image, character):
+	img = image
+	draw = ImageDraw.Draw(img)
+	if character.skills["Acrobatics"] == True:
+		font = ImageFont.truetype(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\Verdana.ttf",30)
+		draw.text((425, 1340), "X",(0,0,0), font=font)
+		font = ImageFont.truetype(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\Verdana.ttf",40)
+		draw.text((465, 1330), "+" + str(abilityBonus(character.abilities[1]) + 2),(0,0,0), font=font)
+	else:
+		font = ImageFont.truetype(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\Verdana.ttf",40)
+		draw.text((465, 1330), writeAbilityBonus(character.abilities[1]),(0,0,0), font=font)
+	if character.skills["Animal Handling"] == True:
+		font = ImageFont.truetype(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\Verdana.ttf",30)
+		draw.text((425, 1395), "X",(0,0,0), font=font)
+		font = ImageFont.truetype(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\Verdana.ttf",40)
+		draw.text((465, 1385), "+" + str(abilityBonus(character.abilities[4]) + 2),(0,0,0), font=font)
+	else:
+		font = ImageFont.truetype(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\Verdana.ttf",40)
+		draw.text((465, 1385), writeAbilityBonus(character.abilities[4]),(0,0,0), font=font)
+	if character.skills["Arcana"] == True:
+		font = ImageFont.truetype(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\Verdana.ttf",30)
+		draw.text((425, 1455), "X",(0,0,0), font=font)
+		font = ImageFont.truetype(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\Verdana.ttf",40)
+		draw.text((465, 1440), "+" + str(abilityBonus(character.abilities[3]) + 2),(0,0,0), font=font)
+	else:
+		font = ImageFont.truetype(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\Verdana.ttf",40)
+		draw.text((465, 1440), writeAbilityBonus(character.abilities[3]),(0,0,0), font=font)
+	if character.skills["Athletics"] == True:
+		font = ImageFont.truetype(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\Verdana.ttf",30)
+		draw.text((425, 1510), "X",(0,0,0), font=font)
+		font = ImageFont.truetype(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\Verdana.ttf",40)
+		draw.text((465, 1500), "+" + str(abilityBonus(character.abilities[0]) + 2),(0,0,0), font=font)
+	else:
+		font = ImageFont.truetype(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\Verdana.ttf",40)
+		draw.text((465, 1500), writeAbilityBonus(character.abilities[0]),(0,0,0), font=font)
+	if character.skills["Deception"] == True:
+		font = ImageFont.truetype(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\Verdana.ttf",30)
+		draw.text((425, 1565), "X",(0,0,0), font=font)
+		font = ImageFont.truetype(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\Verdana.ttf",40)
+		draw.text((465, 1555), "+" + str(abilityBonus(character.abilities[5]) + 2),(0,0,0), font=font)
+	else:
+		font = ImageFont.truetype(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\Verdana.ttf",40)
+		draw.text((465, 1555), writeAbilityBonus(character.abilities[5]),(0,0,0), font=font)
+	if character.skills["History"] == True:
+		font = ImageFont.truetype(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\Verdana.ttf",30)
+		draw.text((425, 1625), "X",(0,0,0), font=font)
+		font = ImageFont.truetype(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\Verdana.ttf",40)
+		draw.text((465, 1610), "+" + str(abilityBonus(character.abilities[3]) + 2),(0,0,0), font=font)
+	else:
+		font = ImageFont.truetype(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\Verdana.ttf",40)
+		draw.text((465, 1610), writeAbilityBonus(character.abilities[3]),(0,0,0), font=font)
+	if character.skills["Insight"] == True:
+		font = ImageFont.truetype(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\Verdana.ttf",30)
+		draw.text((425, 1680), "X",(0,0,0), font=font)
+		font = ImageFont.truetype(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\Verdana.ttf",40)
+		draw.text((465, 1665), "+" + str(abilityBonus(character.abilities[4]) + 2),(0,0,0), font=font)
+	else:
+		font = ImageFont.truetype(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\Verdana.ttf",40)
+		draw.text((465, 1665), writeAbilityBonus(character.abilities[4]),(0,0,0), font=font)
+	if character.skills["Intimidation"] == True:
+		font = ImageFont.truetype(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\Verdana.ttf",30)
+		draw.text((425, 1735), "X",(0,0,0), font=font)
+		font = ImageFont.truetype(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\Verdana.ttf",40)
+		draw.text((465, 1725), "+" + str(abilityBonus(character.abilities[5]) + 2),(0,0,0), font=font)
+	else:
+		font = ImageFont.truetype(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\Verdana.ttf",40)
+		draw.text((465, 1725), writeAbilityBonus(character.abilities[5]),(0,0,0), font=font)
+	if character.skills["Investigation"] == True:
+		font = ImageFont.truetype(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\Verdana.ttf",30)
+		draw.text((425, 1790), "X",(0,0,0), font=font)
+		font = ImageFont.truetype(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\Verdana.ttf",40)
+		draw.text((465, 1780), "+" + str(abilityBonus(character.abilities[3]) + 2),(0,0,0), font=font)
+	else:
+		font = ImageFont.truetype(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\Verdana.ttf",40)
+		draw.text((465, 1780), writeAbilityBonus(character.abilities[3]),(0,0,0), font=font)
+	if character.skills["Medicine"] == True:
+		font = ImageFont.truetype(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\Verdana.ttf",30)
+		draw.text((425, 1845), "X",(0,0,0), font=font)
+		font = ImageFont.truetype(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\Verdana.ttf",40)
+		draw.text((465, 1835), "+" + str(abilityBonus(character.abilities[4]) + 2),(0,0,0), font=font)
+	else:
+		font = ImageFont.truetype(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\Verdana.ttf",40)
+		draw.text((465, 1835), writeAbilityBonus(character.abilities[4]),(0,0,0), font=font)
+	if character.skills["Nature"] == True:
+		font = ImageFont.truetype(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\Verdana.ttf",30)
+		draw.text((425, 1905), "X",(0,0,0), font=font)
+		font = ImageFont.truetype(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\Verdana.ttf",40)
+		draw.text((465, 1895), "+" + str(abilityBonus(character.abilities[3]) + 2),(0,0,0), font=font)
+	else:
+		font = ImageFont.truetype(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\Verdana.ttf",40)
+		draw.text((465, 1895), writeAbilityBonus(character.abilities[3]),(0,0,0), font=font)
+	if character.skills["Perception"] == True:
+		font = ImageFont.truetype(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\Verdana.ttf",30)
+		draw.text((425, 1960), "X",(0,0,0), font=font)
+		font = ImageFont.truetype(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\Verdana.ttf",40)
+		draw.text((465, 1950), "+" + str(abilityBonus(character.abilities[4]) + 2),(0,0,0), font=font)
+		draw.text((150, 2475), str(10 + abilityBonus(character.abilities[4]) + 2),(0,0,0), font=font)
+	
+	else:
+		font = ImageFont.truetype(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\Verdana.ttf",40)
+		draw.text((465, 1950), writeAbilityBonus(character.abilities[4]),(0,0,0), font=font)
+		draw.text((150, 2475), str(10 + abilityBonus(character.abilities[4])),(0,0,0), font=font)
+	if character.skills["Performance"] == True:
+		font = ImageFont.truetype(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\Verdana.ttf",30)
+		draw.text((425, 2015), "X",(0,0,0), font=font)
+		font = ImageFont.truetype(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\Verdana.ttf",40)
+		draw.text((465, 2005), "+" + str(abilityBonus(character.abilities[5]) + 2),(0,0,0), font=font)
+	else:
+		font = ImageFont.truetype(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\Verdana.ttf",40)
+		draw.text((465, 2005), writeAbilityBonus(character.abilities[5]),(0,0,0), font=font)
+	if character.skills["Persuasion"] == True:
+		font = ImageFont.truetype(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\Verdana.ttf",30)
+		draw.text((425, 2070), "X",(0,0,0), font=font)
+		font = ImageFont.truetype(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\Verdana.ttf",40)
+		draw.text((465, 2060), "+" + str(abilityBonus(character.abilities[5]) + 2),(0,0,0), font=font)
+	else:
+		font = ImageFont.truetype(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\Verdana.ttf",40)
+		draw.text((465, 2060), writeAbilityBonus(character.abilities[5]),(0,0,0), font=font)
+	if character.skills["Religion"] == True:
+		font = ImageFont.truetype(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\Verdana.ttf",30)
+		draw.text((425, 2125), "X",(0,0,0), font=font)
+		font = ImageFont.truetype(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\Verdana.ttf",40)
+		draw.text((465, 2115), "+" + str(abilityBonus(character.abilities[3]) + 2),(0,0,0), font=font)
+	else:
+		font = ImageFont.truetype(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\Verdana.ttf",40)
+		draw.text((465, 2115), writeAbilityBonus(character.abilities[3]),(0,0,0), font=font)
+	if character.skills["Sleight of Hand"] == True:
+		font = ImageFont.truetype(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\Verdana.ttf",30)
+		draw.text((425, 2185), "X",(0,0,0), font=font)
+		font = ImageFont.truetype(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\Verdana.ttf",40)
+		draw.text((465, 2175), "+" + str(abilityBonus(character.abilities[1]) + 2),(0,0,0), font=font)
+	else:
+		font = ImageFont.truetype(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\Verdana.ttf",40)
+		draw.text((465, 2175), writeAbilityBonus(character.abilities[1]),(0,0,0), font=font)
+	if character.skills["Stealth"] == True:
+		font = ImageFont.truetype(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\Verdana.ttf",30)
+		draw.text((425, 2240), "X",(0,0,0), font=font)
+		font = ImageFont.truetype(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\Verdana.ttf",40)
+		draw.text((465, 2230), "+" + str(abilityBonus(character.abilities[1]) + 2),(0,0,0), font=font)
+	else:
+		font = ImageFont.truetype(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\Verdana.ttf",40)
+		draw.text((465, 2230), writeAbilityBonus(character.abilities[1]),(0,0,0), font=font)
+	if character.skills["Survival"] == True:
+		font = ImageFont.truetype(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\Verdana.ttf",30)
+		draw.text((425, 2295), "X",(0,0,0), font=font)
+		font = ImageFont.truetype(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\Verdana.ttf",40)
+		draw.text((465, 2285), "+" + str(abilityBonus(character.abilities[4]) + 2),(0,0,0), font=font)
+	else:
+		font = ImageFont.truetype(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\Verdana.ttf",40)
+		draw.text((465, 2285), writeAbilityBonus(character.abilities[4]),(0,0,0), font=font)
+	

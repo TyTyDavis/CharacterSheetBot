@@ -18,13 +18,22 @@ class Character:
 		self.silly = None
 	
 	def setName(self):
+		firstName = None
+		LastName = None
+		
 		if self.gender == "M":
-			self.name = fantasy_name_generator.name_builder(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\first_name_male.txt", r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\last_name.txt")
+			firstName = r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\first_name_female.txt" 
 		elif self.gender == "F":
-			self.name = fantasy_name_generator.name_builder(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\first_name_female.txt", r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\last_name.txt")
+			firstName = r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\first_name_female.txt"
 		else:
-			self.name = fantasy_name_generator.name_builder(random.choice([r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\first_name_male.txt", r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\first_name_female.txt"]), r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\last_name.txt")
-	
+			firstName = self.name = random.choice([r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\first_name_male.txt", r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\first_name_female.txt"])
+		
+		if self.silly == True:
+			lastName = r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\first_name_female.txt", r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\silly_last_names.txt"
+		else: 
+			
+			lastName = r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\first_name_female.txt", r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\last_name.txt"
+		self.name = fantasy_name_generator.name_builder(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\first_name_female.txt", r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\last_name.txt")
 	def setAbilities(self):
 		self.abilities = [0, 0, 0, 0, 0, 0]
 		for x in range(6):
@@ -85,6 +94,31 @@ class Character:
 			else:
 				raceList = ["Human"]
 		self.race = random.choice(raceList)
+		
+		if self.race == "Dwarf":
+			self.abilities[2] += 2
+		elif self.race == "Elf":
+			self.abilities[1] += 2
+		elif self.race == "Halfling":
+			self.abilities[1] += 2
+		elif self.race == "Human":
+			for x in range(6):
+				self.abilities[x] += 1
+		elif self.race == "Dragonborn":
+			self.abilities[0] += 2
+			self.abilities[5] += 1
+		elif self.race == "Gnome":
+			self.abilities[3] += 2
+		elif self.race == "Half-Elf":
+			self.abilities[5] += 2
+			self.abilities[random.randint(0, 4)] += 1
+			self.abilities[random.randint(0, 4)] += 1
+		elif self.race == "Half-Orc":
+			self.abilities[0] += 2
+			self.abilities[2] += 1
+		elif self.race == "Tiefling":
+			self.abilities[3] += 1
+			self.abilities[5] += 2
 	
 	def setHP(self):
 		if self.characterClass == "Barbarian":
@@ -133,7 +167,7 @@ class Character:
 			alignment[1] = random.choice(["G", "N"])
 			
 		if random.randint(1, 100) <= 2:
-			alignment[2] = "E"
+			alignment[1] = "E"
 			
 		self.alignment = alignment
 	
@@ -145,5 +179,90 @@ class Character:
 			self.speed = 30
 		else:
 			self.speed = 30
-
-			
+	
+	def setSkills(self):
+		skillChoices = None
+		numChoices = None
+		self.skills = {
+			"Acrobatics": False,
+			"Animal Handling": False,
+			"Arcana": False,
+			"Athletics": False,
+			"Deception": False,
+			"History": False,
+			"Insight": False,
+			"Intimidation": False,
+			"Investigation": False,
+			"Medicine": False,
+			"Nature": False,
+			"Perception": False,
+			"Performance": False,
+			"Persuasion": False,
+			"Religion": False,
+			"Sleight of Hand": False,
+			"Stealth": False,
+			"Survival": False
+		}
+		if self.characterClass == "Barbarian":
+			numChoices = 2
+			skillChoices = ["Animal Handling", "Athletics", "Intimidation", "Nature", "Perception", "Survival"]
+		elif self.characterClass == "Bard":
+			numChoices = 3
+			skillChoices = ["Acrobatics", "Animal Handling", "Arcana", "Athletics", "Deception", "History", "Insight", "Intimidation", "Investigation", "Medicine", "Nature", "Perception", "Performance", "Persuasion", "Religion", "Sleight of Hand", "Stealth", "Survival"]
+		elif self.characterClass == "Cleric":
+			numChoices = 2
+			skillChoices = ["History", "Insight", "Medicine", "Persuasion", "Religion"]
+		elif self.characterClass == "Druid":
+			numChoices = 2
+			skillChoices = ["Arcana", "Animal Handling", "Insight", "Medicine", "Nature", "Perception", "Religion", "Survival"]
+		elif self.characterClass == "Fighter":
+			numChoices = 2
+			skillChoices = ["Acrobatics", "Animal Handling", "Athletics", "History", "Insight", "Intimidation", "Perception", "Survival"]
+		elif self.characterClass == "Monk":
+			numChoices = 2
+			skillChoices = ["Acrobatics", "Athletics", "History", "Insight", "Religion", "Stealth"]
+		elif self.characterClass == "Paladin":
+			numChoices = 2
+			skillChoices = ["Athletics", "Intimidation", "Insight", "Medicine", "Persuasion", "Religion"]
+		elif self.characterClass == "Ranger":
+			numChoices = 3
+			skillChoices = ["Animal Handling", "Athletics", "Insight", "Investigation", "Nature", "Perception", "Stealth", "Survival"]
+		elif self.characterClass == "Rogue":
+			numChoices = 4
+			skillChoices = ["Acrobatics", "Athletics", "Deception", "Insight", "Intimidation", "Investigation", "Perception", "Performance", "Persuasion", "Sleight of Hand",  "Stealth"]
+		elif self.characterClass == "Sorceror":
+			numChoices = 2
+			skillChoices = ["Arcana", "Deception", "Insight", "Intimidation", "Persuasion", "Religion"]
+		elif self.characterClass == "Barbarian":
+			numChoices = 2
+			skillChoices = ["Arcana", "Deception", "History", "Intimidation", "Investigation", "Nature", "Religion"]
+		elif self.characterClass == "Wizard":
+			numChoices = 2
+			skillChoices = ["Arcana", "History", "Insight", "Investigation", "Medicine", "Religion"]
+		count = 0
+		while count < numChoices:
+			chosen = random.choice(skillChoices)
+			self.skills[chosen] = True
+			count += 1
+	def testSkills(self):		
+		self.skills = {
+				"Acrobatics": True,
+				"Animal Handling": True,
+				"Arcana": True,
+				"Athletics": True,
+				"Deception": True,
+				"History": True,
+				"Insight": True,
+				"Intimidation": True,
+				"Investigation": True,
+				"Medicine": True,
+				"Nature": True,
+				"Perception": True,
+				"Performance": True,
+				"Persuasion": True,
+				"Religion": True,
+				"Sleight of Hand": True,
+				"Stealth": True,
+				"Survival": True
+			}
+				
