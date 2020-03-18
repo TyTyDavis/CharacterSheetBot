@@ -2,6 +2,10 @@ import random
 import writer
 import fantasy_name_generator
 
+
+martialWeapons = ["battleaxe", "Flail", "glaive", "greatsword", "halberd", "lance", "longsword", "maul", "morningstar", "pike", "rapier", "scimitar", "shortsword", "trident", "war pick", "warhammer", "whip"]
+simpleWeapons = ["club", "dagger", "greatclub", "handaxe", "javelin", "light hammer", "mace", "quarterstaff", "sickle", "spear"]
+mediumArmor = ["hide armor", "chain shirt", "scale mail", "breastplate", "half plate armor"]
 class Character:
 	def __init_(self):
 		self.abilities = None
@@ -41,7 +45,7 @@ class Character:
 	
 	def setClass(self, abilities):
 		classList = None
-		if random.randint(1,10) <= 1:
+		if random.randint(1,10) <= 2:
 			classList = ["Barbarian", "Bard", "Cleric", "Druid", "Fighter", "Monk", "Paladin", "Ranger", "Rogue", "Sorceror", "Warlock", "Wizard"]
 			self.silly = True
 		else:
@@ -182,7 +186,7 @@ class Character:
 	
 	def setSkills(self):
 		skillChoices = None
-		numChoices = None
+		numChoices = 2
 		self.skills = {
 			"Acrobatics": False,
 			"Animal Handling": False,
@@ -233,7 +237,7 @@ class Character:
 		elif self.characterClass == "Sorceror":
 			numChoices = 2
 			skillChoices = ["Arcana", "Deception", "Insight", "Intimidation", "Persuasion", "Religion"]
-		elif self.characterClass == "Barbarian":
+		elif self.characterClass == "Warlock":
 			numChoices = 2
 			skillChoices = ["Arcana", "Deception", "History", "Intimidation", "Investigation", "Nature", "Religion"]
 		elif self.characterClass == "Wizard":
@@ -243,7 +247,9 @@ class Character:
 		while count < numChoices:
 			chosen = random.choice(skillChoices)
 			self.skills[chosen] = True
+			skillChoices.remove(chosen)
 			count += 1
+	
 	def testSkills(self):		
 		self.skills = {
 				"Acrobatics": True,
@@ -265,4 +271,31 @@ class Character:
 				"Stealth": True,
 				"Survival": True
 			}
-				
+	def setEquipment(self):
+		self.weapon1 = None
+		self.weapon2 = None
+		self.armor = None
+		self.shield = None
+		self.equipment = []
+		equipmentChoices = []
+		if self.characterClass == "Barbararian":
+			self.weapon1 = random.choice(martialWeapons)
+			self.weapon2 = random.choice(simpleWeapons)
+			self.armor = random.choice(mediumArmor)
+		else:
+			self.weapon1 = random.choice(martialWeapons)
+			self.weapon2 = random.choice(["handaxe", "dagger"])
+			self.armor = random.choice(mediumArmor)
+			
+		self.equipment.append(self.weapon1)
+		self.equipment.append(self.weapon2)
+		self.equipment.append(self.armor)
+		self.GP = 3
+		self.SP = 5
+		self.CP = 10
+		
+	def testEquipment(self):
+		self.equipment = ["shortsword", "dagger", "buckler", "pouch", "lucky coin", "ink bottle", "flint and steel", "parchment"]
+		self.GP = 3
+		self.SP = 5
+		self.CP = 10

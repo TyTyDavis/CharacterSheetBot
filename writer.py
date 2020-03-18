@@ -1,6 +1,7 @@
 from PIL import Image
 from PIL import ImageFont
 from PIL import ImageDraw
+import textwrap
 
 def abilityBonus(score):
 	if score > 5 and score < 8:
@@ -336,4 +337,19 @@ def writeSkills(image, character):
 	else:
 		font = ImageFont.truetype(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\Verdana.ttf",40)
 		draw.text((465, 2285), writeAbilityBonus(character.abilities[4]),(0,0,0), font=font)
+def writeEquipment(image, character):
+#1110 x 2460 500 wide
+	line = 0
+	img = image
+	draw = ImageDraw.Draw(img)
+	equipmentString = str(character.equipment).strip('[]')
+	toPrint = textwrap.wrap(equipmentString, 30)
+	font = ImageFont.truetype(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\Verdana.ttf",30)
+	for x in range(len(toPrint)):
+		draw.text((1110, 2470 + line), str(toPrint[x]).replace("'",""),(0,0,0), font=font)
+		line += 47
 	
+	font = ImageFont.truetype(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\Verdana.ttf",40)
+	draw.text((975, 2505), str(character.CP),(0,0,0), font=font)
+	draw.text((975, 2615), str(character.SP),(0,0,0), font=font)
+	draw.text((975, 2830), str(character.GP),(0,0,0), font=font)
