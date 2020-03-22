@@ -1,11 +1,16 @@
 import random
 import writer
 import fantasy_name_generator
+import weapons
 
-
-martialWeapons = ["battleaxe", "Flail", "glaive", "greatsword", "halberd", "lance", "longsword", "maul", "morningstar", "pike", "rapier", "scimitar", "shortsword", "trident", "war pick", "warhammer", "whip"]
-simpleWeapons = ["club", "dagger", "greatclub", "handaxe", "javelin", "light hammer", "mace", "quarterstaff", "sickle", "spear"]
+martialWeapons = [weapons.Battleaxe(), weapons.Flail(), weapons.Glaive(), weapons.Greatsword(), weapons.Halber(), weapons.Lance(), weapons.Longsword(), weapons.Maul(), weapons.Morningstar(), weapons.Pike(), weapons.Rapier(), weapons.Scimitar(), weapons.Shortsword(), weapons.Trident(), weapons.Warpick(), weapons.Warhammer(), weapons.Whip()]
+martialRangedWeapons = []
+simpleWeapons = [weapons.Club(), weapons.Dagger(), weapons.GreatClub(), weapons.Handaxe(), weapons.Javelin(), weapons.Lighthammer(), weapons.Mace(), weapons.Quarterstaff(), weapons.Sickle(), weapons.Spear()]
+simpleRangedWeapons = []
+lightArmor = []
 mediumArmor = ["hide armor", "chain shirt", "scale mail", "breastplate", "half plate armor"]
+heavyArmor = []
+
 class Character:
 	def __init_(self):
 		self.abilities = None
