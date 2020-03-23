@@ -1,5 +1,6 @@
 class Weapon:
-
+	def __init__(self):
+		pass
 class Club(Weapon):
 	name = "Club"
 	damage = "1d4"
@@ -155,7 +156,7 @@ class Battleaxe(Weapon):
 	twoHand = False
 	range = None
 
-class FLail(Weapon):
+class Flail(Weapon):
 	name = "Flail"
 	damage = "1d8"
 	damageType = "Bludgeoning"
@@ -409,3 +410,16 @@ class Longbow(Weapon):
 	thrown = True
 	twoHand = True
 	range = "150/600"
+	
+class MonkHands(Weapon):
+	name = "Unarmed"
+	damage = "1d4"
+	damageType = "Bludgeoning"
+	weight = 0
+	light = False
+	heavy = False
+	finesse = False
+	thrown = False
+	twoHand = True
+	range = None
+	

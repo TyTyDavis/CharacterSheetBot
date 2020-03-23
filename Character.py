@@ -2,14 +2,15 @@ import random
 import writer
 import fantasy_name_generator
 import weapons
+import armors
 
-martialWeapons = [weapons.Battleaxe(), weapons.Flail(), weapons.Glaive(), weapons.Greatsword(), weapons.Halber(), weapons.Lance(), weapons.Longsword(), weapons.Maul(), weapons.Morningstar(), weapons.Pike(), weapons.Rapier(), weapons.Scimitar(), weapons.Shortsword(), weapons.Trident(), weapons.Warpick(), weapons.Warhammer(), weapons.Whip()]
-martialRangedWeapons = []
-simpleWeapons = [weapons.Club(), weapons.Dagger(), weapons.GreatClub(), weapons.Handaxe(), weapons.Javelin(), weapons.Lighthammer(), weapons.Mace(), weapons.Quarterstaff(), weapons.Sickle(), weapons.Spear()]
-simpleRangedWeapons = []
-lightArmor = []
-mediumArmor = ["hide armor", "chain shirt", "scale mail", "breastplate", "half plate armor"]
-heavyArmor = []
+martialWeapons = [weapons.Battleaxe(), weapons.Flail(), weapons.Glaive(), weapons.Greatsword(), weapons.Halberd(), weapons.Lance(), weapons.Longsword(), weapons.Maul(), weapons.Morningstar(), weapons.Pike(), weapons.Rapier(), weapons.Scimitar(), weapons.Shortsword(), weapons.Trident(), weapons.Warpick(), weapons.Warhammer(), weapons.Whip()]
+martialRangedWeapons = [weapons.Longbow()] #update!
+simpleWeapons = [weapons.Club(), weapons.Dagger(), weapons.Greatclub(), weapons.Handaxe(), weapons.Javelin(), weapons.LightHammer(), weapons.Mace(), weapons.Quarterstaff(), weapons.Sickle(), weapons.Spear()]
+simpleRangedWeapons = [weapons.Dart()] #update~
+lightArmor = [armors.Padded(), armors.Leather(), armors.StuddedLeather(), ]
+mediumArmor = [armors.Hide(), armors.ChainShirt(), armors.ScaleMail(), armors.Breastplate(), armors.HalfPlate()]
+heavyArmor = [armors.RingMail(), armors.ChainMail(), armors.Splint(), armors.Plate()]
 
 class Character:
 	def __init_(self):
@@ -287,14 +288,63 @@ class Character:
 			self.weapon1 = random.choice(martialWeapons)
 			self.weapon2 = random.choice(simpleWeapons)
 			self.armor = random.choice(mediumArmor)
-		else:
-			self.weapon1 = random.choice(martialWeapons)
-			self.weapon2 = random.choice(["handaxe", "dagger"])
+		elif self.characterClass == "Bard":
+			self.weapon1 = random.choice([weapons.Rapier(), weapons.Longsword(), weapons.Shortword(), weapons.Club(), weapons.Dagger(), weapons.GreatClub(), weapons.Handaxe(), weapons.Javelin(), weapons.Lighthammer(), weapons.Mace(), weapons.Quarterstaff(), weapons.Sickle(), weapons.Spear()])
+			self.weapon2 = random.choice([weapons.Dagger(), weapons.Shortbow(), weapons.LightCrossbow()])
+			self.armor = random.choice(lightArmor)
+		elif self.characterClass == "Cleric":
+			self.weapon1 = random.choice([weapons.Mace(), weapons.Warhammer(), weapons.Sickle(), weapons.Greatclub()])
+			self.weapon2 = random.choice(simpleRangedWeapons)
 			self.armor = random.choice(mediumArmor)
+		elif self.characterClass == "Druid":
+			self.weapon1 = random.choice([weapons.Club(), weapons.Dagger(), weapons.Mace(), weapons.Quarterstaff(), weapons.Scimitar(), weapons.Sickle(), weapons.Spear()])
+			self.weapon2 = random.choice([weapons.Dagger(), weapons.Dart()])
+			self.armor = random.choice([armors.Padded(), armors.Leather(), armors.Hide()])
+		elif self.characterClass == "Fighter":
+			self.weapon1 = random.choice(martialWeapons)
+			self.weapon2 = random.choice(simpleWeapons)
+			self.armor = random.choice(heavyArmor)
+		elif self.characterClass == "Barbararian":
+			self.weapon1 = random.choice(martialWeapons)
+			self.weapon2 = random.choice(simpleWeapons)
+			self.armor = random.choice(mediumArmor)
+		elif self.characterClass == "Monk":
+			self.weapon1 = weapons.MonkHands()
+			self.weapon2 = random.choice(simpleWeapons)
+			self.armor = None
+		elif self.characterClass == "Paladin":
+			self.weapon1 = random.choice(martialWeapons)
+			self.weapon2 = random.choice(simpleWeapons)
+			self.armor = random.choice(heavyArmor)
+		elif self.characterClass == "Ranger":
+			self.weapon1 = random.choice(simpleWeapons)
+			self.weapon2 = weapons.Longbow()
+			self.armor = random.choice(lightArmor)
+		elif self.characterClass == "Rogue":
+			self.weapon1 = random.choice(simpleWeapons)
+			self.weapon2 = random.choice(simpleRangedWeapons)
+			self.armor = random.choice(lightArmor)
+		elif self.characterClass == "Sorceror":
+			self.weapon1 = random.choice([weapons.Dagger(), weapons.Dart(), weapons.LightCrossbow()])
+			self.weapon2 = None
+			self.armor = None
+		elif self.characterClass == "Warlock":
+			self.weapon1 = random.choice(simpleWeapons)
+			self.weapon2 = None
+			self.armor = random.choice(lightArmor)
+		elif self.characterClass == "Wizard":
+			self.weapon1 = random.choice([weapons.Dagger(), weapons.Dart(), weapons.LightCrossbow()])
+			self.weapon2 = None
+			self.armor = None
+		#else:
+		#	self.weapon1 = random.choice(simpleWeapons)
+		#	self.weapon2 = random.choice(simpleWeapons)
+		#	self.armor = random.choice(mediumArmor)
+		#	self.equipment.append("Else error")
 			
-		self.equipment.append(self.weapon1)
-		self.equipment.append(self.weapon2)
-		self.equipment.append(self.armor)
+		if self.weapon1 != None and self.weapon1.name != "Unarmed": self.equipment.append(self.weapon1.name)
+		if self.weapon2 != None: self.equipment.append(self.weapon2.name)
+		if self.armor != None: self.equipment.append(self.armor.name)
 		self.GP = 3
 		self.SP = 5
 		self.CP = 10
