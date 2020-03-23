@@ -353,3 +353,23 @@ def writeEquipment(image, character):
 	draw.text((975, 2505), str(character.CP),(0,0,0), font=font)
 	draw.text((975, 2615), str(character.SP),(0,0,0), font=font)
 	draw.text((975, 2830), str(character.GP),(0,0,0), font=font)
+	
+def writeAttacks(image, character):
+	img = image
+	draw = ImageDraw.Draw(img)
+	font = ImageFont.truetype(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\Verdana.ttf",30)
+	if character.weapon1 != None:
+		draw.text((950, 1650), character.weapon1.name,(0,0,0), font=font)
+		draw.text((1230, 1650), "+" + str(abilityBonus(character.abilities[0]) + 2),(0,0,0), font=font)
+		draw.text((1380, 1650), character.weapon1.damageType,(0,0,0), font=font)
+	
+	if character.weapon2!= None:
+		draw.text((950, 1730), character.weapon2.name,(0,0,0), font=font)
+		draw.text((1230, 1730), "+" + str(abilityBonus(character.abilities[0]) + 2),(0,0,0), font=font)
+		draw.text((1380, 1730), character.weapon2.damageType,(0,0,0), font=font)
+
+def writeArmor(image, character):
+	img = image
+	draw = ImageDraw.Draw(img)
+	font = ImageFont.truetype(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\Verdana.ttf",60)
+	draw.text((990, 610), str(character.ac),(0,0,0), font=font)

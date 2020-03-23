@@ -4,7 +4,7 @@ class Weapon:
 class Club(Weapon):
 	name = "Club"
 	damage = "1d4"
-	damageType = "bludgeoning"
+	damageType = "Bludgeoning"
 	weight = 2
 	light = True
 	finesse = False

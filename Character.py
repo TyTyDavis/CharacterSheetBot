@@ -25,6 +25,7 @@ class Character:
 		self.hp = 12
 		self.proficiency = 2
 		self.speed = 20
+		self.AC = 10
 		self.silly = None
 	
 	def setName(self):
@@ -336,12 +337,12 @@ class Character:
 			self.weapon1 = random.choice([weapons.Dagger(), weapons.Dart(), weapons.LightCrossbow()])
 			self.weapon2 = None
 			self.armor = None
-		#else:
-		#	self.weapon1 = random.choice(simpleWeapons)
-		#	self.weapon2 = random.choice(simpleWeapons)
-		#	self.armor = random.choice(mediumArmor)
-		#	self.equipment.append("Else error")
-			
+		
+		
+		if self.armor != None: 
+			self.ac = self.armor.ac + writer.abilityBonus(self.abilities[1])
+		else:
+			self.ac = 10 + writer.abilityBonus(self.abilities[1])
 		if self.weapon1 != None and self.weapon1.name != "Unarmed": self.equipment.append(self.weapon1.name)
 		if self.weapon2 != None: self.equipment.append(self.weapon2.name)
 		if self.armor != None: self.equipment.append(self.armor.name)
