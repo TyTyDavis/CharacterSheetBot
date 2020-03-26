@@ -3,6 +3,7 @@ import writer
 import fantasy_name_generator
 import weapons
 import armors
+import spells
 
 martialWeapons = [weapons.Battleaxe(), weapons.Flail(), weapons.Glaive(), weapons.Greatsword(), weapons.Halberd(), weapons.Lance(), weapons.Longsword(), weapons.Maul(), weapons.Morningstar(), weapons.Pike(), weapons.Rapier(), weapons.Scimitar(), weapons.Shortsword(), weapons.Trident(), weapons.Warpick(), weapons.Warhammer(), weapons.Whip()]
 martialRangedWeapons = [weapons.Longbow()] #update!
@@ -27,6 +28,7 @@ class Character:
 		self.speed = 20
 		self.AC = 10
 		self.silly = None
+		self.caster = False
 	
 	def setName(self):
 		firstName = None
@@ -72,7 +74,10 @@ class Character:
 			else:
 				classList = ["Wizard", "Fighter", "Cleric", "Rogue", "Bard"]
 		self.characterClass = random.choice(classList)
-	
+		if self.characterClass == "Wizard" or self.characterClass == "Sorceror" or self.characterClass == "Warlock" or self.characterClass == "Druid" or self.characterClass == "Bard" or self.characterClass == "Cleric":
+			self.caster = True
+		else:
+			self.caster = False
 	def setRace(self, characterClass):
 		raceList = None
 		if self.silly == True:
@@ -284,7 +289,8 @@ class Character:
 		self.armor = None
 		self.shield = None
 		self.equipment = []
-		equipmentChoices = []
+		equipmentChoices = ["Caltrops", "Candle", "Crowbar", "Lamp", "Lock", "Manacles", "Rope", "Tent", "Tinderbox", "Torch"]
+		equipmentCount = 2
 		if self.characterClass == "Barbararian":
 			self.weapon1 = random.choice(martialWeapons)
 			self.weapon2 = random.choice(simpleWeapons)
@@ -346,6 +352,12 @@ class Character:
 		if self.weapon1 != None and self.weapon1.name != "Unarmed": self.equipment.append(self.weapon1.name)
 		if self.weapon2 != None: self.equipment.append(self.weapon2.name)
 		if self.armor != None: self.equipment.append(self.armor.name)
+		count = 0
+		while count < equipmentCount:
+			chosen = random.choice(equipmentChoices)
+			self.equipment.append(chosen)
+			equipmentChoices.remove(chosen)
+			count += 1
 		self.GP = 3
 		self.SP = 5
 		self.CP = 10
