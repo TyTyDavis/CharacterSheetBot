@@ -373,3 +373,27 @@ def writeArmor(image, character):
 	draw = ImageDraw.Draw(img)
 	font = ImageFont.truetype(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\Verdana.ttf",60)
 	draw.text((990, 610), str(character.ac),(0,0,0), font=font)
+	
+def writeSpells(image, character):
+	if character.caster == False:
+		pass
+	else:
+		line = 0
+		img = image
+		draw = ImageDraw.Draw(img)
+		cantripString = "Cantrips: " + str(character.cantrips).strip('[]')
+		spells1String = "Level 1: " + str(character.spells1).strip('[]')
+		
+		toPrint = textwrap.wrap(cantripString, 50)
+		font = ImageFont.truetype(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\Verdana.ttf",30)
+		for x in range(len(toPrint)):
+			draw.text((925, 1880 + line), str(toPrint[x]).replace("'",""),(0,0,0), font=font)
+			line += 45
+		
+		line += 45
+		toPrint = textwrap.wrap(spells1String, 50)
+		for x in range(len(toPrint)):
+			draw.text((925, 1880 + line), str(toPrint[x]).replace("'",""),(0,0,0), font=font)
+			line += 45
+		
+		

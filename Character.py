@@ -13,6 +13,16 @@ lightArmor = [armors.Padded(), armors.Leather(), armors.StuddedLeather(), ]
 mediumArmor = [armors.Hide(), armors.ChainShirt(), armors.ScaleMail(), armors.Breastplate(), armors.HalfPlate()]
 heavyArmor = [armors.RingMail(), armors.ChainMail(), armors.Splint(), armors.Plate()]
 
+def randsFromList(list, choices):
+	oldList = list
+	returnList = []
+	count = 0
+	while count < choices:
+		a = random.choice(oldList)
+		returnList.append(a)
+		oldList.remove(a)
+		count += 1
+	return returnList
 def maxKey(d):
      """ a) create a list of the dict's keys and values; 
          b) return the key with the max value"""  
@@ -313,7 +323,7 @@ class Character:
 			self.weapon2 = random.choice(simpleWeapons)
 			self.armor = random.choice(mediumArmor)
 		elif self.characterClass == "Bard":
-			self.weapon1 = random.choice([weapons.Rapier(), weapons.Longsword(), weapons.Shortword(), weapons.Club(), weapons.Dagger(), weapons.GreatClub(), weapons.Handaxe(), weapons.Javelin(), weapons.Lighthammer(), weapons.Mace(), weapons.Quarterstaff(), weapons.Sickle(), weapons.Spear()])
+			self.weapon1 = random.choice([weapons.Rapier(), weapons.Longsword(), weapons.Shortsword(), weapons.Club(), weapons.Dagger(), weapons.GreatClub(), weapons.Handaxe(), weapons.Javelin(), weapons.Lighthammer(), weapons.Mace(), weapons.Quarterstaff(), weapons.Sickle(), weapons.Spear()])
 			self.weapon2 = random.choice([weapons.Dagger(), weapons.Shortbow(), weapons.LightCrossbow()])
 			self.armor = random.choice(lightArmor)
 		elif self.characterClass == "Cleric":
@@ -363,7 +373,7 @@ class Character:
 		
 		
 		if self.armor != None: 
-			self.ac = self.armor.ac + writer.abilityBonus(self.abilities["dex"])
+			self.ac = self.armor.ac + writer.abilityBonus(self.abilities["Dex"])
 		else:
 			self.ac = 10 + writer.abilityBonus(self.abilities["Dex"])
 		if self.weapon1 != None and self.weapon1.name != "Unarmed": self.equipment.append(self.weapon1.name)
@@ -379,8 +389,50 @@ class Character:
 		self.SP = 5
 		self.CP = 10
 		
+	def setSpells(self):
+		if self.characterClass == "Bard":
+			cantripCount = 2
+			spells1Count = 4
+			cantripChoices = spells.bardCantrips
+			spells1Choices = spells.bardSpells1
+		elif self.characterClass == "Cleric":
+			cantripCount = 3
+			spells1Count = 2
+			cantripChoices = spells.clericCantrips
+			spells1Choices = spells.clericSpells1
+		elif self.characterClass == "Druid":
+			cantripCount = 2
+			spells1Count = 2
+			cantripChoices = spells.druidCantrips
+			spells1Choices = spells.druidSpells1
+		elif self.characterClass == "Sorceror":
+			cantripCount = 4
+			spells1Count = 2
+			cantripChoices = spells.sorcerorCantrips
+			spells1Choices = spells.sorcerorSpells1
+		elif self.characterClass == "Warlock":
+			cantripCount = 2
+			spells1Count = 2
+			cantripChoices = spells.warlockCantrips
+			spells1Choices = spells.warlockSpells1
+		elif self.characterClass == "Wizard":
+			cantripCount = 3
+			spells1Count = 6
+			cantripChoices = spells.wizardCantrips
+			spells1Choices = spells.wizardSpells1
+		else: 
+			cantripCount = 1
+			spells1Count = 1
+			cantripChoices = ["Else error"]
+			spells1Choices = ["Else error"]
+		self.cantrips = randsFromList(cantripChoices, cantripCount)
+		self.spells1 = randsFromList(spells1Choices, spells1Count)
 	def testEquipment(self):
 		self.equipment = ["shortsword", "dagger", "buckler", "pouch", "lucky coin", "ink bottle", "flint and steel", "parchment"]
 		self.GP = 3
 		self.SP = 5
 		self.CP = 10
+	def testClass(self, charclass, silly):
+		self.characterClass = charclass
+		self.silly = silly
+		self.caster = True
