@@ -13,6 +13,13 @@ lightArmor = [armors.Padded(), armors.Leather(), armors.StuddedLeather(), ]
 mediumArmor = [armors.Hide(), armors.ChainShirt(), armors.ScaleMail(), armors.Breastplate(), armors.HalfPlate()]
 heavyArmor = [armors.RingMail(), armors.ChainMail(), armors.Splint(), armors.Plate()]
 
+def maxKey(d):
+     """ a) create a list of the dict's keys and values; 
+         b) return the key with the max value"""  
+     v=list(d.values())
+     k=list(d.keys())
+     return k[v.index(max(v))]
+	 
 class Character:
 	def __init_(self):
 		self.abilities = None
@@ -48,8 +55,15 @@ class Character:
 			lastName = r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\first_name_female.txt", r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\last_name.txt"
 		self.name = fantasy_name_generator.name_builder(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\first_name_female.txt", r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\last_name.txt")
 	def setAbilities(self):
-		self.abilities = [0, 0, 0, 0, 0, 0]
-		for x in range(6):
+		self.abilities = {
+			"Str": 0,
+			"Dex": 0,
+			"Con": 0,
+			"Int": 0,
+			"Wis": 0,
+			"Cha": 0
+			}
+		for x in self.abilities:
 			self.abilities[x] = random.randint(8, 16)
 	
 	def setClass(self, abilities):
@@ -59,17 +73,17 @@ class Character:
 			self.silly = True
 		else:
 			self.silly = False
-			if abilities.index(max(abilities)) == 0:
+			if maxKey(self.abilities) == "Str":
 				classList = ["Barbarian", "Fighter", "Paladin"]
-			elif abilities.index(max(abilities)) == 1:
+			elif maxKey(self.abilities) == "Dex":
 				classList = ["Monk", "Ranger", "Rogue"]
-			elif abilities.index(max(abilities)) == 2:
+			elif maxKey(self.abilities) == "Con":
 				classList = ["Fighter", "Barbarian", "Cleric"]
-			elif abilities.index(max(abilities)) == 3:
+			elif maxKey(self.abilities) == "Int":
 				classList = ["Wizard", "Wizard", "Wizard", "Bard"]
-			elif abilities.index(max(abilities)) == 4:
+			elif maxKey(self.abilities) == "Wis":
 				classList = ["Cleric", "Druid"]
-			elif abilities.index(max(abilities)) == 5:
+			elif maxKey(self.abilities) == "Cha":
 				classList = ["Bard", "Sorceror", "Warlock"]
 			else:
 				classList = ["Wizard", "Fighter", "Cleric", "Rogue", "Bard"]
@@ -112,29 +126,32 @@ class Character:
 		self.race = random.choice(raceList)
 		
 		if self.race == "Dwarf":
-			self.abilities[2] += 2
+			self.abilities["Con"] += 2
 		elif self.race == "Elf":
-			self.abilities[1] += 2
+			self.abilities["Dex"] += 2
 		elif self.race == "Halfling":
-			self.abilities[1] += 2
+			self.abilities["Dex"] += 2
 		elif self.race == "Human":
-			for x in range(6):
+			for x in self.abilities:
 				self.abilities[x] += 1
 		elif self.race == "Dragonborn":
-			self.abilities[0] += 2
-			self.abilities[5] += 1
+			self.abilities["Str"] += 2
+			self.abilities["Cha"] += 1
 		elif self.race == "Gnome":
-			self.abilities[3] += 2
+			self.abilities["Int"] += 2
 		elif self.race == "Half-Elf":
-			self.abilities[5] += 2
-			self.abilities[random.randint(0, 4)] += 1
-			self.abilities[random.randint(0, 4)] += 1
+			self.abilities["Cha"] += 2
+			ab = ["Str", "Dex", "Con", "Int", "Wis"]
+			a = random.choice(ab)
+			self.abilities[a] += 1
+			ab.remove(a)
+			self.abilities[random.choice(ab)] += 1
 		elif self.race == "Half-Orc":
-			self.abilities[0] += 2
-			self.abilities[2] += 1
+			self.abilities["Str"] += 2
+			self.abilities["Con"] += 1
 		elif self.race == "Tiefling":
-			self.abilities[3] += 1
-			self.abilities[5] += 2
+			self.abilities["Int"] += 1
+			self.abilities["Cha"] += 2
 	
 	def setHP(self):
 		if self.characterClass == "Barbarian":
@@ -162,7 +179,7 @@ class Character:
 		elif self.characterClass == "Wizard":
 			self.hitDie = 6
 		
-		self.hp = self.hitDie + writer.abilityBonus(self.abilities[2])
+		self.hp = self.hitDie + writer.abilityBonus(self.abilities["Con"])
 		
 	def setAlignment(self):
 		alignment = ["L", "G"]
@@ -346,9 +363,9 @@ class Character:
 		
 		
 		if self.armor != None: 
-			self.ac = self.armor.ac + writer.abilityBonus(self.abilities[1])
+			self.ac = self.armor.ac + writer.abilityBonus(self.abilities["dex"])
 		else:
-			self.ac = 10 + writer.abilityBonus(self.abilities[1])
+			self.ac = 10 + writer.abilityBonus(self.abilities["Dex"])
 		if self.weapon1 != None and self.weapon1.name != "Unarmed": self.equipment.append(self.weapon1.name)
 		if self.weapon2 != None: self.equipment.append(self.weapon2.name)
 		if self.armor != None: self.equipment.append(self.armor.name)
