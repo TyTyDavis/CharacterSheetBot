@@ -8,10 +8,15 @@ from Character import Character
 
 """
 To do next time:
-skills
-equipment
-attacks
-spells
+fill out features and trais from both class and race
+correctly calculate starting money
+add in background, and implement any changes it might bring
+add in tracery to write flavor text
+fill out Other Proficiencies
+
+
+Things to fix:
+Silly names not appearing
 
 Tweaks to make:
 make a "silly" last name list
@@ -22,8 +27,9 @@ img = Image.open(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\blankShee
 char.gender = random.choice(["M", "F", "M", "F", "M", "F", "M", "F", "M", "F", "N"])
 char.setAbilities()
 char.setClass(char.abilities)
-char.testClass("Wizard", True)
+#char.testClass("Wizard", True)
 char.setRace(char.characterClass)
+char.setBackground()
 char.setName()
 char.setHP()
 char.setAlignment()
@@ -48,10 +54,11 @@ writer.writeEquipment(img, char)
 writer.writeAttacks(img, char)
 writer.writeArmor(img, char)
 writer.writeSpells(img, char)
+writer.writeBackground(img, char)
 img.save(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\newSheet.png")
 print(char.gender)
 print(char.silly)
 print(char.caster)
 print(char.abilities)
-if char.caster:
-	print(char.cantrips)
+print(char.background)
+print(char.background.skills)

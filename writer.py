@@ -395,5 +395,10 @@ def writeSpells(image, character):
 		for x in range(len(toPrint)):
 			draw.text((925, 1880 + line), str(toPrint[x]).replace("'",""),(0,0,0), font=font)
 			line += 45
-		
+def writeBackground(image, character):
+	img = image
+	draw = ImageDraw.Draw(img)
+	font = ImageFont.truetype(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\Verdana.ttf",60)
+	draw.text((1600, 200), character.background.name,(0,0,0), font=font)
+	
 		

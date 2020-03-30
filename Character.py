@@ -4,6 +4,7 @@ import fantasy_name_generator
 import weapons
 import armors
 import spells
+import backgrounds
 
 martialWeapons = [weapons.Battleaxe(), weapons.Flail(), weapons.Glaive(), weapons.Greatsword(), weapons.Halberd(), weapons.Lance(), weapons.Longsword(), weapons.Maul(), weapons.Morningstar(), weapons.Pike(), weapons.Rapier(), weapons.Scimitar(), weapons.Shortsword(), weapons.Trident(), weapons.Warpick(), weapons.Warhammer(), weapons.Whip()]
 martialRangedWeapons = [weapons.Longbow()] #update!
@@ -12,7 +13,21 @@ simpleRangedWeapons = [weapons.Dart()] #update~
 lightArmor = [armors.Padded(), armors.Leather(), armors.StuddedLeather(), ]
 mediumArmor = [armors.Hide(), armors.ChainShirt(), armors.ScaleMail(), armors.Breastplate(), armors.HalfPlate()]
 heavyArmor = [armors.RingMail(), armors.ChainMail(), armors.Splint(), armors.Plate()]
-
+backgrounds = [		
+			backgrounds.Acolyte(), 
+			backgrounds.Charlatan(),
+			backgrounds.Criminal(),
+			backgrounds.Entertainer(),
+			backgrounds.FolkHero(),
+			backgrounds.GuildArtisan(),
+			backgrounds.Hermit(),
+			backgrounds.Noble(),
+			backgrounds.Outlander(),
+			backgrounds.Sage(),
+			backgrounds.Sailor(),
+			backgrounds.Soldier(),
+			backgrounds.Urchin()
+]
 def randsFromList(list, choices):
 	oldList = list
 	returnList = []
@@ -31,7 +46,7 @@ def maxKey(d):
      return k[v.index(max(v))]
 	 
 class Character:
-	def __init_(self):
+	def __init__(self):
 		self.abilities = None
 		self.name = None
 		self.gender = None
@@ -46,7 +61,34 @@ class Character:
 		self.AC = 10
 		self.silly = None
 		self.caster = False
-	
+		self.skills = {
+			"Acrobatics": False,
+			"Animal Handling": False,
+			"Arcana": False,
+			"Athletics": False,
+			"Deception": False,
+			"History": False,
+			"Insight": False,
+			"Intimidation": False,
+			"Investigation": False,
+			"Medicine": False,
+			"Nature": False,
+			"Perception": False,
+			"Performance": False,
+			"Persuasion": False,
+			"Religion": False,
+			"Sleight of Hand": False,
+			"Stealth": False,
+			"Survival": False
+	}
+		self.abilities = {
+			"Str": 0,
+			"Dex": 0,
+			"Con": 0,
+			"Int": 0,
+			"Wis": 0,
+			"Cha": 0
+			}
 	def setName(self):
 		firstName = None
 		LastName = None
@@ -65,14 +107,6 @@ class Character:
 			lastName = r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\first_name_female.txt", r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\last_name.txt"
 		self.name = fantasy_name_generator.name_builder(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\first_name_female.txt", r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\last_name.txt")
 	def setAbilities(self):
-		self.abilities = {
-			"Str": 0,
-			"Dex": 0,
-			"Con": 0,
-			"Int": 0,
-			"Wis": 0,
-			"Cha": 0
-			}
 		for x in self.abilities:
 			self.abilities[x] = random.randint(8, 16)
 	
@@ -224,28 +258,10 @@ class Character:
 			self.speed = 30
 	
 	def setSkills(self):
+		for x in self.background.skills:
+			self.skills[x] = True
 		skillChoices = None
 		numChoices = 2
-		self.skills = {
-			"Acrobatics": False,
-			"Animal Handling": False,
-			"Arcana": False,
-			"Athletics": False,
-			"Deception": False,
-			"History": False,
-			"Insight": False,
-			"Intimidation": False,
-			"Investigation": False,
-			"Medicine": False,
-			"Nature": False,
-			"Perception": False,
-			"Performance": False,
-			"Persuasion": False,
-			"Religion": False,
-			"Sleight of Hand": False,
-			"Stealth": False,
-			"Survival": False
-		}
 		if self.characterClass == "Barbarian":
 			numChoices = 2
 			skillChoices = ["Animal Handling", "Athletics", "Intimidation", "Nature", "Perception", "Survival"]
@@ -283,11 +299,15 @@ class Character:
 			numChoices = 2
 			skillChoices = ["Arcana", "History", "Insight", "Investigation", "Medicine", "Religion"]
 		count = 0
-		while count < numChoices:
+		failSwitch = 0
+		while count < numChoices and failSwitch < 10:
 			chosen = random.choice(skillChoices)
-			self.skills[chosen] = True
-			skillChoices.remove(chosen)
-			count += 1
+			if self.skills[chosen] == False:
+				self.skills[chosen] = True
+				skillChoices.remove(chosen)
+				count += 1
+			else:
+				failSwitch += 1
 	
 	def testSkills(self):		
 		self.skills = {
@@ -323,7 +343,7 @@ class Character:
 			self.weapon2 = random.choice(simpleWeapons)
 			self.armor = random.choice(mediumArmor)
 		elif self.characterClass == "Bard":
-			self.weapon1 = random.choice([weapons.Rapier(), weapons.Longsword(), weapons.Shortsword(), weapons.Club(), weapons.Dagger(), weapons.GreatClub(), weapons.Handaxe(), weapons.Javelin(), weapons.Lighthammer(), weapons.Mace(), weapons.Quarterstaff(), weapons.Sickle(), weapons.Spear()])
+			self.weapon1 = random.choice([weapons.Rapier(), weapons.Longsword(), weapons.Shortsword(), weapons.Club(), weapons.Dagger(), weapons.Greatclub(), weapons.Handaxe(), weapons.Javelin(), weapons.LightHammer(), weapons.Mace(), weapons.Quarterstaff(), weapons.Sickle(), weapons.Spear()])
 			self.weapon2 = random.choice([weapons.Dagger(), weapons.Shortbow(), weapons.LightCrossbow()])
 			self.armor = random.choice(lightArmor)
 		elif self.characterClass == "Cleric":
@@ -385,9 +405,10 @@ class Character:
 			self.equipment.append(chosen)
 			equipmentChoices.remove(chosen)
 			count += 1
-		self.GP = 3
-		self.SP = 5
-		self.CP = 10
+		self.GP = self.background.gp
+		self.SP = 0
+		self.CP = 0
+		self.equipment = self.equipment + self.background.equipment
 		
 	def setSpells(self):
 		if self.characterClass == "Bard":
@@ -427,6 +448,10 @@ class Character:
 			spells1Choices = ["Else error"]
 		self.cantrips = randsFromList(cantripChoices, cantripCount)
 		self.spells1 = randsFromList(spells1Choices, spells1Count)
+	
+	def setBackground(self):
+		self.background = random.choice(backgrounds)
+	
 	def testEquipment(self):
 		self.equipment = ["shortsword", "dagger", "buckler", "pouch", "lucky coin", "ink bottle", "flint and steel", "parchment"]
 		self.GP = 3
