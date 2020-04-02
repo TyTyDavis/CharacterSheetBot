@@ -67,7 +67,7 @@ def writeClass(image, characterClass):
 	img = image
 	draw = ImageDraw.Draw(img)
 	font = ImageFont.truetype(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\Verdana.ttf",60)
-	draw.text((1130, 200), characterClass,(0,0,0), font=font)
+	draw.text((1130, 200), characterClass.name,(0,0,0), font=font)
 	
 def writeRace(image, race):
 	img = image
@@ -357,7 +357,7 @@ def writeEquipment(image, character):
 def writeAttacks(image, character):
 	img = image
 	draw = ImageDraw.Draw(img)
-	font = ImageFont.truetype(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\Verdana.ttf",30)
+	font = ImageFont.truetype(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\Verdana.ttf",25)
 	if character.weapon1 != None:
 		draw.text((950, 1650), character.weapon1.name,(0,0,0), font=font)
 		draw.text((1230, 1650), "+" + str(abilityBonus(character.abilities["Str"]) + 2),(0,0,0), font=font)

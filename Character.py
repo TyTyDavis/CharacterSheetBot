@@ -5,6 +5,7 @@ import weapons
 import armors
 import spells
 import backgrounds
+import classes
 
 martialWeapons = [weapons.Battleaxe(), weapons.Flail(), weapons.Glaive(), weapons.Greatsword(), weapons.Halberd(), weapons.Lance(), weapons.Longsword(), weapons.Maul(), weapons.Morningstar(), weapons.Pike(), weapons.Rapier(), weapons.Scimitar(), weapons.Shortsword(), weapons.Trident(), weapons.Warpick(), weapons.Warhammer(), weapons.Whip()]
 martialRangedWeapons = [weapons.Longbow()] #update!
@@ -110,65 +111,33 @@ class Character:
 		for x in self.abilities:
 			self.abilities[x] = random.randint(8, 16)
 	
-	def setClass(self, abilities):
-		classList = None
+	def setClass(self):
 		if random.randint(1,10) <= 2:
-			classList = ["Barbarian", "Bard", "Cleric", "Druid", "Fighter", "Monk", "Paladin", "Ranger", "Rogue", "Sorceror", "Warlock", "Wizard"]
+			self.characterClass = random.choice([classes.Barbarian(), classes.Bard(), classes.Cleric(), classes.Druid(), classes.Fighter(), classes.Monk(), classes.Paladin(), classes.Ranger(), classes.Rogue(), classes.Sorceror(), classes.Warlock(), classes.Wizard()])
 			self.silly = True
 		else:
 			self.silly = False
 			if maxKey(self.abilities) == "Str":
-				classList = ["Barbarian", "Fighter", "Paladin"]
+				self.characterClass = random.choice([classes.Barbarian(), classes.Fighter(), classes.Paladin()])
 			elif maxKey(self.abilities) == "Dex":
-				classList = ["Monk", "Ranger", "Rogue"]
+				self.characterClass = random.choice([classes.Monk(), classes.Ranger(), classes.Rogue()])
 			elif maxKey(self.abilities) == "Con":
-				classList = ["Fighter", "Barbarian", "Cleric"]
+				self.characterClass = random.choice([classes.Fighter(), classes.Barbarian(), classes.Cleric()])
 			elif maxKey(self.abilities) == "Int":
-				classList = ["Wizard", "Wizard", "Wizard", "Bard"]
+				self.characterClass = random.choice([classes.Wizard(), classes.Wizard(), classes.Wizard(), classes.Bard()])
 			elif maxKey(self.abilities) == "Wis":
-				classList = ["Cleric", "Druid"]
+				self.characterClass = random.choice([classes.Cleric(), self.Druid()])
 			elif maxKey(self.abilities) == "Cha":
-				classList = ["Bard", "Sorceror", "Warlock"]
+				self.characterClass = random.choice([classes.Bard(), classes.Sorceror(), classes.Warlock()])
 			else:
-				classList = ["Wizard", "Fighter", "Cleric", "Rogue", "Bard"]
-		self.characterClass = random.choice(classList)
-		if self.characterClass == "Wizard" or self.characterClass == "Sorceror" or self.characterClass == "Warlock" or self.characterClass == "Druid" or self.characterClass == "Bard" or self.characterClass == "Cleric":
-			self.caster = True
-		else:
-			self.caster = False
-	def setRace(self, characterClass):
-		raceList = None
-		if self.silly == True:
-			raceList = ["Dragonborn", "Dwarf", "Elf", "Gnome", "Half-Elf", "Half-Orc", "Halfling", "Human", "Tiefling"]
-		else:
-			if characterClass == "Barbarian":
-				raceList = ["Half-Orc", "Human", "Dragonborn"]
-			elif characterClass == "Bard":
-				raceList = ["Elf", "Gnome", "Half-Elf", "Halfling", "Human", "Tiefling"]
-			elif characterClass == "Cleric":
-				raceList = ["Dwarf", "Elf", "Human", "Dragonborn"]
-			elif characterClass == "Druid":
-				raceList = ["Elf", "Half-Elf", "Human", "Tiefling"]
-			elif characterClass == "Fighter":
-				raceList = ["Dragonborn", "Dwarf", "Half-Orc", "Human"]
-			elif characterClass == "Monk":
-				raceList = ["Elf", "Half-Elf", "Human"]
-			elif characterClass == "Paladin":
-				raceList = ["Dragonborn", "Dwarf", "Half-Elf", "Half-Orc", "Human"]
-			elif characterClass == "Ranger":
-				raceList = ["Elf", "Half-Elf", "Human"]
-			elif characterClass == "Rogue":
-				raceList = ["Elf", "Half-Elf", "Gnome", "Halfling", "Human"]
-			elif characterClass == "Sorceror":
-				raceList = ["Elf", "Half-Elf", "Human", "Gnome", "Halfling", "Tiefling"]
-			elif characterClass == "Warlock":
-				raceList = ["Tiefling", "Human", "Half-Elf", "Dragonborn"]
-			elif characterClass == "Wizard":
-				raceList = ["Elf", "Half-Elf", "Human", "Gnome"]
-			else:
-				raceList = ["Human"]
-		self.race = random.choice(raceList)
+				self.characterClass = random.choice([classes.Wizard(), classes.Fighter(), classes.Fighter(), classes.Rogue(), classes.Bard()])
+		self.caster = self.characterClass.caster
 		
+	def setRace(self, characterClass):
+		self.race = self.characterClass.classRace()
+		if self.silly == True:
+			self.race = random.choice(["Dragonborn", "Dwarf", "Elf", "Gnome", "Half-Elf", "Half-Orc", "Halfling", "Human", "Tiefling"])
+		self.race = self.characterClass.classRace()
 		if self.race == "Dwarf":
 			self.abilities["Con"] += 2
 		elif self.race == "Elf":
@@ -198,56 +167,17 @@ class Character:
 			self.abilities["Cha"] += 2
 	
 	def setHP(self):
-		if self.characterClass == "Barbarian":
-			self.hitDie = 12
-		elif self.characterClass == "Bard":
-			self.hitDie = 8
-		elif self.characterClass == "Cleric":
-			self.hitDie = 8
-		elif self.characterClass == "Druid":
-			self.hitDie = 8
-		elif self.characterClass == "Fighter":
-			self.hitDie = 10
-		elif self.characterClass == "Monk":
-			self.hitDie = 8
-		elif self.characterClass == "Paladin":
-			self.hitDie = 10
-		elif self.characterClass == "Ranger":
-			self.hitDie = 10
-		elif self.characterClass == "Rogue":
-			self.hitDie = 8
-		elif self.characterClass == "Sorceror":
-			self.hitDie = 6
-		elif self.characterClass == "Warlock":
-			self.hitDie = 8
-		elif self.characterClass == "Wizard":
-			self.hitDie = 6
-		
+		self.hitDie = self.characterClass.hitDie
 		self.hp = self.hitDie + writer.abilityBonus(self.abilities["Con"])
 		
 	def setAlignment(self):
-		alignment = ["L", "G"]
-		if self.characterClass == "Barbarian":
-			alignment[0] = "C"
-			alignment[1] = random.choice(["G", "N"])
-		elif self.characterClass == "Bard":
-			alignment[0] = "C"
-			alignment[1] = random.choice(["G", "N"])
-		elif self.characterClass == "Paladin":
-			alignment[0] = "L"
-			alignment[1] = random.choice(["G", "N"])
-		elif self.characterClass == "Rogue":
-			alignment[0] = "C"
-			alignment[1] = random.choice(["G", "N"])
-		else:	
-			alignment[0] = random.choice(["L", "N", "C"])
-			alignment[1] = random.choice(["G", "N"])
-			
+		if random.randint(1, 100) <= 2:
+			alignment[1] = "E"
+		
+		self.alignment = self.characterClass.classAlignment()
 		if random.randint(1, 100) <= 2:
 			alignment[1] = "E"
 			
-		self.alignment = alignment
-	
 	def setSpeed(self):
 	#to do: include armor in calculation
 		if self.race == "Gnome" or self.race == "Halfling" or self.race == "Dwarf":
@@ -260,44 +190,10 @@ class Character:
 	def setSkills(self):
 		for x in self.background.skills:
 			self.skills[x] = True
-		skillChoices = None
+		skillChoices = []
 		numChoices = 2
-		if self.characterClass == "Barbarian":
-			numChoices = 2
-			skillChoices = ["Animal Handling", "Athletics", "Intimidation", "Nature", "Perception", "Survival"]
-		elif self.characterClass == "Bard":
-			numChoices = 3
-			skillChoices = ["Acrobatics", "Animal Handling", "Arcana", "Athletics", "Deception", "History", "Insight", "Intimidation", "Investigation", "Medicine", "Nature", "Perception", "Performance", "Persuasion", "Religion", "Sleight of Hand", "Stealth", "Survival"]
-		elif self.characterClass == "Cleric":
-			numChoices = 2
-			skillChoices = ["History", "Insight", "Medicine", "Persuasion", "Religion"]
-		elif self.characterClass == "Druid":
-			numChoices = 2
-			skillChoices = ["Arcana", "Animal Handling", "Insight", "Medicine", "Nature", "Perception", "Religion", "Survival"]
-		elif self.characterClass == "Fighter":
-			numChoices = 2
-			skillChoices = ["Acrobatics", "Animal Handling", "Athletics", "History", "Insight", "Intimidation", "Perception", "Survival"]
-		elif self.characterClass == "Monk":
-			numChoices = 2
-			skillChoices = ["Acrobatics", "Athletics", "History", "Insight", "Religion", "Stealth"]
-		elif self.characterClass == "Paladin":
-			numChoices = 2
-			skillChoices = ["Athletics", "Intimidation", "Insight", "Medicine", "Persuasion", "Religion"]
-		elif self.characterClass == "Ranger":
-			numChoices = 3
-			skillChoices = ["Animal Handling", "Athletics", "Insight", "Investigation", "Nature", "Perception", "Stealth", "Survival"]
-		elif self.characterClass == "Rogue":
-			numChoices = 4
-			skillChoices = ["Acrobatics", "Athletics", "Deception", "Insight", "Intimidation", "Investigation", "Perception", "Performance", "Persuasion", "Sleight of Hand",  "Stealth"]
-		elif self.characterClass == "Sorceror":
-			numChoices = 2
-			skillChoices = ["Arcana", "Deception", "Insight", "Intimidation", "Persuasion", "Religion"]
-		elif self.characterClass == "Warlock":
-			numChoices = 2
-			skillChoices = ["Arcana", "Deception", "History", "Intimidation", "Investigation", "Nature", "Religion"]
-		elif self.characterClass == "Wizard":
-			numChoices = 2
-			skillChoices = ["Arcana", "History", "Insight", "Investigation", "Medicine", "Religion"]
+		numChoices = self.characterClass.skillNum
+		skillChoices = self.characterClass.skillChoices
 		count = 0
 		failSwitch = 0
 		while count < numChoices and failSwitch < 10:
@@ -338,55 +234,55 @@ class Character:
 		self.equipment = []
 		equipmentChoices = ["Caltrops", "Candle", "Crowbar", "Lamp", "Lock", "Manacles", "Rope", "Tent", "Tinderbox", "Torch"]
 		equipmentCount = 2
-		if self.characterClass == "Barbararian":
+		if self.characterClass.name == "Barbarian":
 			self.weapon1 = random.choice(martialWeapons)
 			self.weapon2 = random.choice(simpleWeapons)
 			self.armor = random.choice(mediumArmor)
-		elif self.characterClass == "Bard":
+		elif self.characterClass.name == "Bard":
 			self.weapon1 = random.choice([weapons.Rapier(), weapons.Longsword(), weapons.Shortsword(), weapons.Club(), weapons.Dagger(), weapons.Greatclub(), weapons.Handaxe(), weapons.Javelin(), weapons.LightHammer(), weapons.Mace(), weapons.Quarterstaff(), weapons.Sickle(), weapons.Spear()])
 			self.weapon2 = random.choice([weapons.Dagger(), weapons.Shortbow(), weapons.LightCrossbow()])
 			self.armor = random.choice(lightArmor)
-		elif self.characterClass == "Cleric":
+		elif self.characterClass.name == "Cleric":
 			self.weapon1 = random.choice([weapons.Mace(), weapons.Warhammer(), weapons.Sickle(), weapons.Greatclub()])
 			self.weapon2 = random.choice(simpleRangedWeapons)
 			self.armor = random.choice(mediumArmor)
-		elif self.characterClass == "Druid":
+		elif self.characterClass.name == "Druid":
 			self.weapon1 = random.choice([weapons.Club(), weapons.Dagger(), weapons.Mace(), weapons.Quarterstaff(), weapons.Scimitar(), weapons.Sickle(), weapons.Spear()])
 			self.weapon2 = random.choice([weapons.Dagger(), weapons.Dart()])
 			self.armor = random.choice([armors.Padded(), armors.Leather(), armors.Hide()])
-		elif self.characterClass == "Fighter":
+		elif self.characterClass.name == "Fighter":
 			self.weapon1 = random.choice(martialWeapons)
 			self.weapon2 = random.choice(simpleWeapons)
 			self.armor = random.choice(heavyArmor)
-		elif self.characterClass == "Barbararian":
+		elif self.characterClass.name == "Barbararian":
 			self.weapon1 = random.choice(martialWeapons)
 			self.weapon2 = random.choice(simpleWeapons)
 			self.armor = random.choice(mediumArmor)
-		elif self.characterClass == "Monk":
+		elif self.characterClass.name == "Monk":
 			self.weapon1 = weapons.MonkHands()
 			self.weapon2 = random.choice(simpleWeapons)
 			self.armor = None
-		elif self.characterClass == "Paladin":
+		elif self.characterClass.name == "Paladin":
 			self.weapon1 = random.choice(martialWeapons)
 			self.weapon2 = random.choice(simpleWeapons)
 			self.armor = random.choice(heavyArmor)
-		elif self.characterClass == "Ranger":
+		elif self.characterClass.name == "Ranger":
 			self.weapon1 = random.choice(simpleWeapons)
 			self.weapon2 = weapons.Longbow()
 			self.armor = random.choice(lightArmor)
-		elif self.characterClass == "Rogue":
+		elif self.characterClass.name == "Rogue":
 			self.weapon1 = random.choice(simpleWeapons)
 			self.weapon2 = random.choice(simpleRangedWeapons)
 			self.armor = random.choice(lightArmor)
-		elif self.characterClass == "Sorceror":
+		elif self.characterClass.name == "Sorceror":
 			self.weapon1 = random.choice([weapons.Dagger(), weapons.Dart(), weapons.LightCrossbow()])
 			self.weapon2 = None
 			self.armor = None
-		elif self.characterClass == "Warlock":
+		elif self.characterClass.name == "Warlock":
 			self.weapon1 = random.choice(simpleWeapons)
 			self.weapon2 = None
 			self.armor = random.choice(lightArmor)
-		elif self.characterClass == "Wizard":
+		elif self.characterClass.name == "Wizard":
 			self.weapon1 = random.choice([weapons.Dagger(), weapons.Dart(), weapons.LightCrossbow()])
 			self.weapon2 = None
 			self.armor = None
@@ -411,43 +307,8 @@ class Character:
 		self.equipment = self.equipment + self.background.equipment
 		
 	def setSpells(self):
-		if self.characterClass == "Bard":
-			cantripCount = 2
-			spells1Count = 4
-			cantripChoices = spells.bardCantrips
-			spells1Choices = spells.bardSpells1
-		elif self.characterClass == "Cleric":
-			cantripCount = 3
-			spells1Count = 2
-			cantripChoices = spells.clericCantrips
-			spells1Choices = spells.clericSpells1
-		elif self.characterClass == "Druid":
-			cantripCount = 2
-			spells1Count = 2
-			cantripChoices = spells.druidCantrips
-			spells1Choices = spells.druidSpells1
-		elif self.characterClass == "Sorceror":
-			cantripCount = 4
-			spells1Count = 2
-			cantripChoices = spells.sorcerorCantrips
-			spells1Choices = spells.sorcerorSpells1
-		elif self.characterClass == "Warlock":
-			cantripCount = 2
-			spells1Count = 2
-			cantripChoices = spells.warlockCantrips
-			spells1Choices = spells.warlockSpells1
-		elif self.characterClass == "Wizard":
-			cantripCount = 3
-			spells1Count = 6
-			cantripChoices = spells.wizardCantrips
-			spells1Choices = spells.wizardSpells1
-		else: 
-			cantripCount = 1
-			spells1Count = 1
-			cantripChoices = ["Else error"]
-			spells1Choices = ["Else error"]
-		self.cantrips = randsFromList(cantripChoices, cantripCount)
-		self.spells1 = randsFromList(spells1Choices, spells1Count)
+		self.cantrips = randsFromList(self.characterClass.cantrips, self.characterClass.cantripCount)
+		self.spells1 = randsFromList(self.characterClass.spells1, self.characterClass.spells1Count)
 	
 	def setBackground(self):
 		self.background = random.choice(backgrounds)
@@ -457,7 +318,7 @@ class Character:
 		self.GP = 3
 		self.SP = 5
 		self.CP = 10
-	def testClass(self, charclass, silly):
-		self.characterClass = charclass
-		self.silly = silly
-		self.caster = True
+		
+	def testClass(self):
+		self.characterClass = classes.Sorceror()
+		self.caster = self.characterClass.caster

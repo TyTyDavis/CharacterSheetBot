@@ -10,7 +10,7 @@ from Character import Character
 To do next time:
 fill out features and trais from both class and race
 correctly calculate starting money
-add in background, and implement any changes it might bring
+add background feature text blocks
 add in tracery to write flavor text
 fill out Other Proficiencies
 
@@ -19,15 +19,14 @@ Things to fix:
 Silly names not appearing
 
 Tweaks to make:
-make a "silly" last name list
 tweak name lists
 """
 char = Character()
 img = Image.open(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\blankSheet.png")
 char.gender = random.choice(["M", "F", "M", "F", "M", "F", "M", "F", "M", "F", "N"])
 char.setAbilities()
-char.setClass(char.abilities)
-#char.testClass("Wizard", True)
+char.setClass()
+#char.testClass()
 char.setRace(char.characterClass)
 char.setBackground()
 char.setName()
@@ -36,8 +35,7 @@ char.setAlignment()
 char.setSpeed()
 char.setSkills()
 char.setEquipment()
-if char.caster:
-	char.setSpells()
+char.setSpells()
 writer.writeName(img, char.name)
 writer.writeAbilities(img, char.abilities)
 writer.writeClass(img, char.characterClass)
@@ -60,5 +58,5 @@ print(char.gender)
 print(char.silly)
 print(char.caster)
 print(char.abilities)
-print(char.background)
+print(char.background.name)
 print(char.background.skills)
