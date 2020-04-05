@@ -1,11 +1,14 @@
 class Background:
 	def __init__(self):
 		pass
-	
-#light armor	
+	def backgroundModifiers(self, char):
+		for x in self.tools:	
+			char.proficiencies.append(x)
+			
 class Acolyte(Background):
 	name = "Acolyte"
 	skills = ["Insight", "Religion"]
+	tools = []
 	languageChoices = 2
 	equipment = ["Holy symbol", "Prayer book", "5 sticks of incense", "Vestments", "common clothes"]
 	gp = 15
@@ -42,8 +45,8 @@ class FolkHero(Background):
 	name = "Folk Hero"
 	skills = ["Animal Handling", "Survival"]
 	languageChoices = 0
-	tools = ["Artisan's tools", "Land vehicles"]
-	equipment = ["Artisan's tools", "Shovel", "Iron pot", "Common clothes"]
+	tools = ["Artisans tools", "Land vehicles"]
+	equipment = ["Artisans tools", "Shovel", "Iron pot", "Common clothes"]
 	gp = 10
 	
 class GuildArtisan(Background):
@@ -51,8 +54,8 @@ class GuildArtisan(Background):
 	name = "Guild Artisan"
 	skills = ["Insight", "Persuasion"]
 	languageChoices = 1
-	tools = ["Artisan's tools", "Lute"]
-	equipment = ["Artisan's tools", "Guild letter of introduction", "Traveler's clothes"]
+	tools = ["Artisans tools", "Lute"]
+	equipment = ["Artisans tools", "Guild letter of introduction", "Travelers clothes"]
 	gp = 15
 	
 class Hermit(Background):
@@ -79,7 +82,7 @@ class Outlander(Background):
 	skills = ["Athletics", "Survival"]
 	languageChoices = 1
 	tools = ["Flute"]
-	equipment = ["Staff", "Hunting trap", "Animal trophy", "Traveler's clothes"]
+	equipment = ["Staff", "Hunting trap", "Animal trophy", "Travelers clothes"]
 	gp = 10
 	
 class Sage(Background):
@@ -87,7 +90,7 @@ class Sage(Background):
 	name = "Sage"
 	skills = ["Arcana", "History"]
 	languageChoices = 2
-	tools = ["Artisan's tools", "Lute"]
+	tools = ["Artisans tools", "Lute"]
 	equipment = ["Black ink", "Quill", "Small knife", "Letter from deceased colleague", "Common clothes"]
 	gp = 10
 	
@@ -96,7 +99,7 @@ class Sailor(Background):
 	name = "Sailor"
 	skills = ["Athletics", "Perception"]
 	languageChoices = 1
-	tools = ["Navigator's tools", "Water vehicles"]
+	tools = ["Navigators tools", "Water vehicles"]
 	equipment = ["Belaying pin", "50 feet of silk rope", "A small stone with a holei in the middle", "Common clothes"]
 	gp = 10
 	

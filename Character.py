@@ -6,6 +6,7 @@ import armors
 import spells
 import backgrounds
 import classes
+import races
 
 martialWeapons = [weapons.Battleaxe(), weapons.Flail(), weapons.Glaive(), weapons.Greatsword(), weapons.Halberd(), weapons.Lance(), weapons.Longsword(), weapons.Maul(), weapons.Morningstar(), weapons.Pike(), weapons.Rapier(), weapons.Scimitar(), weapons.Shortsword(), weapons.Trident(), weapons.Warpick(), weapons.Warhammer(), weapons.Whip()]
 martialRangedWeapons = [weapons.Longbow()] #update!
@@ -48,6 +49,7 @@ def maxKey(d):
 	 
 class Character:
 	def __init__(self):
+		self.level = 1
 		self.abilities = None
 		self.name = None
 		self.gender = None
@@ -90,6 +92,9 @@ class Character:
 			"Wis": 0,
 			"Cha": 0
 			}
+		self.proficiencies = []
+		self.languages = []
+		self.traits = []
 	def setName(self):
 		firstName = None
 		LastName = None
@@ -126,45 +131,19 @@ class Character:
 			elif maxKey(self.abilities) == "Int":
 				self.characterClass = random.choice([classes.Wizard(), classes.Wizard(), classes.Wizard(), classes.Bard()])
 			elif maxKey(self.abilities) == "Wis":
-				self.characterClass = random.choice([classes.Cleric(), self.Druid()])
+				self.characterClass = random.choice([classes.Cleric(), classes.Druid()])
 			elif maxKey(self.abilities) == "Cha":
 				self.characterClass = random.choice([classes.Bard(), classes.Sorceror(), classes.Warlock()])
 			else:
 				self.characterClass = random.choice([classes.Wizard(), classes.Fighter(), classes.Fighter(), classes.Rogue(), classes.Bard()])
 		self.caster = self.characterClass.caster
 		
-	def setRace(self, characterClass):
+	def setRace(self):
 		self.race = self.characterClass.classRace()
 		if self.silly == True:
-			self.race = random.choice(["Dragonborn", "Dwarf", "Elf", "Gnome", "Half-Elf", "Half-Orc", "Halfling", "Human", "Tiefling"])
+			self.race = random.choice(races.allRaces)
 		self.race = self.characterClass.classRace()
-		if self.race == "Dwarf":
-			self.abilities["Con"] += 2
-		elif self.race == "Elf":
-			self.abilities["Dex"] += 2
-		elif self.race == "Halfling":
-			self.abilities["Dex"] += 2
-		elif self.race == "Human":
-			for x in self.abilities:
-				self.abilities[x] += 1
-		elif self.race == "Dragonborn":
-			self.abilities["Str"] += 2
-			self.abilities["Cha"] += 1
-		elif self.race == "Gnome":
-			self.abilities["Int"] += 2
-		elif self.race == "Half-Elf":
-			self.abilities["Cha"] += 2
-			ab = ["Str", "Dex", "Con", "Int", "Wis"]
-			a = random.choice(ab)
-			self.abilities[a] += 1
-			ab.remove(a)
-			self.abilities[random.choice(ab)] += 1
-		elif self.race == "Half-Orc":
-			self.abilities["Str"] += 2
-			self.abilities["Con"] += 1
-		elif self.race == "Tiefling":
-			self.abilities["Int"] += 1
-			self.abilities["Cha"] += 2
+		
 	
 	def setHP(self):
 		self.hitDie = self.characterClass.hitDie
@@ -172,20 +151,13 @@ class Character:
 		
 	def setAlignment(self):
 		if random.randint(1, 100) <= 2:
-			alignment[1] = "E"
+			self.alignment[1] = "E"
 		
 		self.alignment = self.characterClass.classAlignment()
-		if random.randint(1, 100) <= 2:
-			alignment[1] = "E"
 			
 	def setSpeed(self):
 	#to do: include armor in calculation
-		if self.race == "Gnome" or self.race == "Halfling" or self.race == "Dwarf":
-			self.speed = 25
-		elif self.race == "Tiefling" or self.race == "Half-Orc" or self.race == "Half-Elf" or self.race == "Dragonborn" or self.race == "Human" or self.race == "Elf":
-			self.speed = 30
-		else:
-			self.speed = 30
+		self.speed = self.race.speed
 	
 	def setSkills(self):
 		for x in self.background.skills:
@@ -307,8 +279,9 @@ class Character:
 		self.equipment = self.equipment + self.background.equipment
 		
 	def setSpells(self):
-		self.cantrips = randsFromList(self.characterClass.cantrips, self.characterClass.cantripCount)
-		self.spells1 = randsFromList(self.characterClass.spells1, self.characterClass.spells1Count)
+		if self.caster == True:
+			self.cantrips = randsFromList(self.characterClass.cantrips, self.characterClass.cantripCount)
+			self.spells1 = randsFromList(self.characterClass.spells1, self.characterClass.spells1Count)
 	
 	def setBackground(self):
 		self.background = random.choice(backgrounds)
@@ -322,3 +295,6 @@ class Character:
 	def testClass(self):
 		self.characterClass = classes.Sorceror()
 		self.caster = self.characterClass.caster
+		
+	def testRace(self):
+		self.race = races.HillDwarf()

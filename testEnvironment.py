@@ -4,15 +4,14 @@ from PIL import ImageDraw
 import writer
 import random
 from Character import Character
+import races
+import classes
+import backgrounds
 
 
 """
 To do next time:
-fill out features and trais from both class and race
-correctly calculate starting money
-add background feature text blocks
 add in tracery to write flavor text
-fill out Other Proficiencies
 
 
 Things to fix:
@@ -27,8 +26,12 @@ char.gender = random.choice(["M", "F", "M", "F", "M", "F", "M", "F", "M", "F", "
 char.setAbilities()
 char.setClass()
 #char.testClass()
-char.setRace(char.characterClass)
+char.characterClass.classModifiers(char)
+char.testRace()
+#char.setRace()
+char.race.racialModifiers(char)
 char.setBackground()
+char.background.backgroundModifiers(char)
 char.setName()
 char.setHP()
 char.setAlignment()
@@ -39,7 +42,7 @@ char.setSpells()
 writer.writeName(img, char.name)
 writer.writeAbilities(img, char.abilities)
 writer.writeClass(img, char.characterClass)
-writer.writeRace(img, char.race)
+writer.writeRace(img, char.race.name)
 writer.writeHP(img, char.hp)
 writer.writeHitDie(img, char.hitDie)
 writer.writeAlignment(img, char.alignment)
@@ -53,9 +56,11 @@ writer.writeAttacks(img, char)
 writer.writeArmor(img, char)
 writer.writeSpells(img, char)
 writer.writeBackground(img, char)
+writer.writeProficiencies(img, char)
+writer.writeTraits(img, char)
 img.save(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\newSheet.png")
 print(char.gender)
-print(char.silly)
+print("Silly:" + str(char.silly))
 print(char.caster)
 print(char.abilities)
 print(char.background.name)

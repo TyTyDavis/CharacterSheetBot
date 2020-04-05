@@ -390,7 +390,6 @@ def writeSpells(image, character):
 			draw.text((925, 1880 + line), str(toPrint[x]).replace("'",""),(0,0,0), font=font)
 			line += 45
 		
-		line += 45
 		toPrint = textwrap.wrap(spells1String, 50)
 		for x in range(len(toPrint)):
 			draw.text((925, 1880 + line), str(toPrint[x]).replace("'",""),(0,0,0), font=font)
@@ -401,4 +400,34 @@ def writeBackground(image, character):
 	font = ImageFont.truetype(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\Verdana.ttf",60)
 	draw.text((1600, 200), character.background.name,(0,0,0), font=font)
 	
+def writeProficiencies(image, character):
+	
+	line = 0
+	img = image
+	draw = ImageDraw.Draw(img)
+	languageString = "Languages: " + str(character.languages).strip('[]')
+	proficiencyString = "Proficiencies: " + str(character.proficiencies).strip('[]')
 		
+	toPrint = textwrap.wrap(languageString, 46)
+	font = ImageFont.truetype(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\Verdana.ttf",30)
+	for x in range(len(toPrint)):
+		draw.text((140, 2600 + line), str(toPrint[x]).replace("'",""),(0,0,0), font=font)
+		line += 50
+	
+	
+	toPrint = textwrap.wrap(proficiencyString, 46)
+	for x in range(len(toPrint)):
+		draw.text((140, 2600 + line), str(toPrint[x]).replace("'",""),(0,0,0), font=font)
+		line += 50
+		
+def writeTraits(image, character):
+	line = 0
+	img = image
+	draw = ImageDraw.Draw(img)
+	font = ImageFont.truetype(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\Verdana.ttf",30)
+	
+	for a in character.traits:
+		toPrint = textwrap.wrap(a, 45)
+		for x in range(len(toPrint)):
+			draw.text((1720, 1600 + line), str(toPrint[x]).replace('"',''),(0,0,0), font=font)
+			line += 46
