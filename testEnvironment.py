@@ -7,6 +7,8 @@ from Character import Character
 import races
 import classes
 import backgrounds
+import tracery
+from tracery.modifiers import base_english
 
 
 """
@@ -22,23 +24,21 @@ tweak name lists
 """
 char = Character()
 img = Image.open(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\blankSheet.png")
-char.gender = random.choice(["M", "F", "M", "F", "M", "F", "M", "F", "M", "F", "N"])
+char.setName()
 char.setAbilities()
 char.setClass()
-#char.testClass()
 char.characterClass.classModifiers(char)
-char.testRace()
-#char.setRace()
+char.setRace()
 char.race.racialModifiers(char)
 char.setBackground()
 char.background.backgroundModifiers(char)
-char.setName()
 char.setHP()
 char.setAlignment()
 char.setSpeed()
 char.setSkills()
 char.setEquipment()
 char.setSpells()
+char.testFlavor()
 writer.writeName(img, char.name)
 writer.writeAbilities(img, char.abilities)
 writer.writeClass(img, char.characterClass)
@@ -58,6 +58,7 @@ writer.writeSpells(img, char)
 writer.writeBackground(img, char)
 writer.writeProficiencies(img, char)
 writer.writeTraits(img, char)
+writer.writeFlavor(img, char)
 img.save(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\newSheet.png")
 print(char.gender)
 print("Silly:" + str(char.silly))

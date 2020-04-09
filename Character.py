@@ -7,14 +7,57 @@ import spells
 import backgrounds
 import classes
 import races
+import tracery
+from tracery.modifiers import base_english
+import flavorText
 
-martialWeapons = [weapons.Battleaxe(), weapons.Flail(), weapons.Glaive(), weapons.Greatsword(), weapons.Halberd(), weapons.Lance(), weapons.Longsword(), weapons.Maul(), weapons.Morningstar(), weapons.Pike(), weapons.Rapier(), weapons.Scimitar(), weapons.Shortsword(), weapons.Trident(), weapons.Warpick(), weapons.Warhammer(), weapons.Whip()]
+martialWeapons = [
+	weapons.Battleaxe(), 
+	weapons.Flail(), 
+	weapons.Glaive(), 
+	weapons.Greatsword(), 
+	weapons.Halberd(), 
+	weapons.Lance(), 
+	weapons.Longsword(), 
+	weapons.Maul(), 
+	weapons.Morningstar(), 
+	weapons.Pike(), 
+	weapons.Rapier(), 
+	weapons.Scimitar(), 
+	weapons.Shortsword(), 
+	weapons.Trident(), 
+	weapons.Warpick(), 
+	weapons.Warhammer(), 
+	weapons.Whip()
+	]
 martialRangedWeapons = [weapons.Longbow()] #update!
-simpleWeapons = [weapons.Club(), weapons.Dagger(), weapons.Greatclub(), weapons.Handaxe(), weapons.Javelin(), weapons.LightHammer(), weapons.Mace(), weapons.Quarterstaff(), weapons.Sickle(), weapons.Spear()]
+simpleWeapons = [
+	weapons.Club(), 
+	weapons.Dagger(), 
+	weapons.Greatclub(), weapons.Handaxe(), 
+	weapons.Javelin(), weapons.LightHammer(), 
+	weapons.Mace(), weapons.Quarterstaff(), 
+	weapons.Sickle(), 
+	weapons.Spear()]
 simpleRangedWeapons = [weapons.Dart()] #update~
-lightArmor = [armors.Padded(), armors.Leather(), armors.StuddedLeather(), ]
-mediumArmor = [armors.Hide(), armors.ChainShirt(), armors.ScaleMail(), armors.Breastplate(), armors.HalfPlate()]
-heavyArmor = [armors.RingMail(), armors.ChainMail(), armors.Splint(), armors.Plate()]
+lightArmor = [
+	armors.Padded(), 
+	armors.Leather(), 
+	armors.StuddedLeather() 
+	]
+mediumArmor = [
+	armors.Hide(), 
+	armors.ChainShirt(), 
+	armors.ScaleMail(), 
+	armors.Breastplate(), 
+	armors.HalfPlate()
+	]
+heavyArmor = [
+	armors.RingMail(), 
+	armors.ChainMail(), 
+	armors.Splint(), 
+	armors.Plate()
+	]
 backgrounds = [		
 			backgrounds.Acolyte(), 
 			backgrounds.Charlatan(),
@@ -52,10 +95,10 @@ class Character:
 		self.level = 1
 		self.abilities = None
 		self.name = None
-		self.gender = None
+		self.gender = random.choice(["M", "F", "M", "F", "M", "F", "M", "F", "M", "F", "N"])
 		self.characterClass = "Fighter"
 		self.race = "Dwarf"
-		self.alignment = "LN"
+		self.alignment = ["L","G"]
 		self.background = "Mercenary"
 		self.hitDie = 8
 		self.hp = 12
@@ -95,23 +138,50 @@ class Character:
 		self.proficiencies = []
 		self.languages = []
 		self.traits = []
+		self.personality = "Blank"
+		self.ideal = "blank"
+		self.bond = "blank"
+		self.flaw = "blank"
 	def setName(self):
 		firstName = None
 		LastName = None
 		
 		if self.gender == "M":
-			firstName = r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\first_name_female.txt" 
+			firstName = r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\first_name_female.txt"
+			flavorText.rules['they'] = "he"
+			flavorText.rules['them'] = "him"
+			flavorText.rules['their'] = "his"
+			flavorText.rules['theirs'] = "his"
+			flavorText.rules['is'] = "is"
+			flavorText.rules['themselves'] = "himself"
+			flavorText.rules['has'] = "has"
+			flavorText.rules['s'] = "s"
 		elif self.gender == "F":
 			firstName = r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\first_name_female.txt"
+			flavorText.rules['they'] = "she"
+			flavorText.rules['them'] = "her"
+			flavorText.rules['their'] = "her"
+			flavorText.rules['theirs'] = "hers"
+			flavorText.rules['is'] = "is"
+			flavorText.rules['themselves'] = "herself"
+			flavorText.rules['has'] = "has"
+			flavorText.rules['s'] = "s"
 		else:
-			firstName = self.name = random.choice([r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\first_name_male.txt", r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\first_name_female.txt"])
-		
+			firstName = random.choice([r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\first_name_male.txt", r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\first_name_female.txt"])
+			flavorText.rules['they'] = "they"
+			flavorText.rules['them'] = "them"
+			flavorText.rules['their'] = "their"
+			flavorText.rules['theirs'] = "theirs"
+			flavorText.rules['is'] = "are"
+			flavorText.rules['themselves'] = "themselves"
+			flavorText.rules['has'] = "have"
+			flavorText.rules['s'] = ""
 		if self.silly == True:
-			lastName = r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\first_name_female.txt", r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\silly_last_names.txt"
+			lastName = r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\silly_last_names.txt"
 		else: 
-			
-			lastName = r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\first_name_female.txt", r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\last_name.txt"
-		self.name = fantasy_name_generator.name_builder(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\first_name_female.txt", r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\last_name.txt")
+			lastName = r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\last_name.txt"
+		self.name = fantasy_name_generator.name_builder(firstName, lastName)
+		
 	def setAbilities(self):
 		for x in self.abilities:
 			self.abilities[x] = random.randint(8, 16)
@@ -150,10 +220,9 @@ class Character:
 		self.hp = self.hitDie + writer.abilityBonus(self.abilities["Con"])
 		
 	def setAlignment(self):
+		self.alignment = self.characterClass.classAlignment()
 		if random.randint(1, 100) <= 2:
 			self.alignment[1] = "E"
-		
-		self.alignment = self.characterClass.classAlignment()
 			
 	def setSpeed(self):
 	#to do: include armor in calculation
@@ -162,8 +231,6 @@ class Character:
 	def setSkills(self):
 		for x in self.background.skills:
 			self.skills[x] = True
-		skillChoices = []
-		numChoices = 2
 		numChoices = self.characterClass.skillNum
 		skillChoices = self.characterClass.skillChoices
 		count = 0
@@ -177,27 +244,6 @@ class Character:
 			else:
 				failSwitch += 1
 	
-	def testSkills(self):		
-		self.skills = {
-				"Acrobatics": True,
-				"Animal Handling": True,
-				"Arcana": True,
-				"Athletics": True,
-				"Deception": True,
-				"History": True,
-				"Insight": True,
-				"Intimidation": True,
-				"Investigation": True,
-				"Medicine": True,
-				"Nature": True,
-				"Perception": True,
-				"Performance": True,
-				"Persuasion": True,
-				"Religion": True,
-				"Sleight of Hand": True,
-				"Stealth": True,
-				"Survival": True
-			}
 	def setEquipment(self):
 		self.weapon1 = None
 		self.weapon2 = None
@@ -293,8 +339,36 @@ class Character:
 		self.CP = 10
 		
 	def testClass(self):
-		self.characterClass = classes.Sorceror()
+		self.characterClass = classes.Monk()
 		self.caster = self.characterClass.caster
 		
 	def testRace(self):
 		self.race = races.HillDwarf()
+		
+	def testSkills(self):		
+		self.skills = {
+				"Acrobatics": True,
+				"Animal Handling": True,
+				"Arcana": True,
+				"Athletics": True,
+				"Deception": True,
+				"History": True,
+				"Insight": True,
+				"Intimidation": True,
+				"Investigation": True,
+				"Medicine": True,
+				"Nature": True,
+				"Perception": True,
+				"Performance": True,
+				"Persuasion": True,
+				"Religion": True,
+				"Sleight of Hand": True,
+				"Stealth": True,
+				"Survival": True
+			}
+			
+	def testFlavor(self):
+		self.personality = flavorText.personalityTrait()
+		self.ideal = "Stupid stuff: I really care about stupid stuff, so much, like, its the best"
+		self.bond = "All my friends are dumb idiots. What a bunch of ding dongs, but I love them anyways"
+		self.flaw = "Honestly, I don't htink I have any flaws. I'm pretty dang perfect, yo."

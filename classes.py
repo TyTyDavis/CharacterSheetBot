@@ -3,6 +3,7 @@ import Character
 import random
 import spells
 import races
+import flavorText
 
 class CharClass:
 	def __init__(self):
@@ -17,6 +18,12 @@ class CharClass:
 		if self.name == "Druid":
 			for x in self.languages:	
 				char.languages.append(x)
+				
+		flavorText.rules['goodPerson'].extend(self.goodPerson)
+		flavorText.rules['interest'].extend(self.interest)
+		flavorText.rules['externalTrait'].extend(self.externalTrait)
+		flavorText.rules['place'].extend(self.place)
+		flavorText.rules['trade'].extend(self.trade)
 		
 class Barbarian(CharClass):
 	def __init__(self):
@@ -30,6 +37,11 @@ class Barbarian(CharClass):
 			"Rage: PHB pg. 48",
 			"Unarmored Defense: While not wearing armor, AC is 10 + Dexterity modifier + Constitution modifier"
 		]
+		self.goodPerson = ['#their# tribal leader']
+		self.interest = ['hunting']
+		self.externalTrait = ['scars', 'face paint', 'animal furs']
+		self.place = ['#their# ancestral territory']
+		self.trade = ['hunter', 'forager']
 	def classAlignment(self):
 		return ["C", random.choice(["G", "N"])]
 	
@@ -52,6 +64,11 @@ class Bard(CharClass):
 		self.traits = [
 			"Bardic Inspiration: PHB pg. 53"
 		]
+		self.goodPerson = ['#their# favorite songwriter', '#their# favorite poet', 'the main character of #their# unfinished book']
+		self.interest = ['poetry', 'obscure songs', 'fairytales', 'sonnets', 'dirty limericks', 'the theatre']
+		self.externalTrait = ['costume', 'diction', 'voice']
+		self.place = ['bardic college', 'performing troupe', 'the theatre']
+		self.trade = ['musician', 'storyteller', 'juggler', 'performer', 'actor', 'comedian', 'singer', 'dancer', 'poet']
 		
 	def classAlignment(self):
 		return ["C", random.choice(["G", "N"])]
@@ -75,6 +92,11 @@ class Cleric(CharClass):
 		self.traits = [
 			"Divine Domain: PHB pg. 58"
 		]
+		self.goodPerson = []
+		self.interest = []
+		self.externalTrait = []
+		self.place = []
+		self.trade = []
 		
 	def classAlignment(self):
 		return [random.choice(["C", "L", "N"]), random.choice(["G", "N"])]
@@ -97,6 +119,12 @@ class Druid(CharClass):
 		self.traits = []
 		self.languages = ["Druidic"]
 		
+		self.goodPerson = []
+		self.interest = []
+		self.externalTrait = []
+		self.place = []
+		self.trade = []
+		
 	def classAlignment(self):
 		return [random.choice(["C", "L", "N"]), random.choice(["G", "N"])]
 	
@@ -116,6 +144,11 @@ class Fighter(CharClass):
 				"Archery: +2 attack bonus with ranged weapons", "Defense: Gain +1 bonus to AC while wearing armor","Dueling: While wielding a melee weapon in one hand and no other weapons, gain +2 to damge rolls","Great Weapon Fighting: When you roll a 1 or 2 on damage die while wielding a two-handed melee weapon, you may reroll and you must use the new roll","Protection: When a creature you see attacks a targer within 5 feet of you, use reaction to impose disadavantage. Must be wielding shield","Two weapon fighting: Add ability modifier to second attack when wielding two weapons"]),
 			"Second Wind: Once per day, regain 1d10 + level HP"
 		]
+		self.goodPerson = []
+		self.interest = []
+		self.externalTrait = []
+		self.place = []
+		self.trade = []
 		
 	def classAlignment(self):
 		return [random.choice(["C", "L", "N"]), random.choice(["G", "N"])]
@@ -136,6 +169,11 @@ class Monk(CharClass):
 			"Unarmored Defense: While not wearing armor, AC is 10 + Dexterity modifier + Wisdom modifier",
 			"Martial arts: PHB pg. 78"
 		]
+		self.goodPerson = ['#their# sensei']
+		self.interest = []
+		self.externalTrait = []
+		self.place = []
+		self.trade = []
 		
 	def classAlignment(self):
 		return [random.choice(["C", "L", "N"]), random.choice(["G", "N"])]
@@ -155,6 +193,11 @@ class Paladin(CharClass):
 			"Divine Sense: PHB pg. 84",
 			"Lay on Hands: PHB pg. 84"
 		]
+		self.goodPerson = []
+		self.interest = []
+		self.externalTrait = []
+		self.place = []
+		self.trade = []
 		
 	def classAlignment(self):
 		return ["L", random.choice(["G", "N"])]
@@ -174,6 +217,11 @@ class Ranger(CharClass):
 			"Favored Enemy: " + random.choice(["Aberrations", " Beasts", "Celestials", "Constructs", "Dragons", "Elementals", "Fey", "Fiends", "Giants", "Monstrosities", "Oozes", "Plants", "Undead"]) + ", PHB pg. 91",
 			"Natural Explorer: PHB pg. 91"
 		]
+		self.goodPerson = []
+		self.interest = []
+		self.externalTrait = []
+		self.place = []
+		self.trade = []
 	
 	def classAlignment(self):
 		return [random.choice(["C", "L", "N"]), random.choice(["G", "N"])]
@@ -195,6 +243,11 @@ class Rogue(CharClass):
 			"Sneak Attack: Extra 1d6 damage if you have advantage on attack, using finesse or ranged weapon",
 			"Thieves Cant: Communicatge with other thieves using secret dialect, jargon and code"
 		]
+		self.goodPerson = []
+		self.interest = []
+		self.externalTrait = []
+		self.place = []
+		self.trade = []
 		
 	def classAlignment(self):
 		return ["C", random.choice(["G", "N"])]
@@ -217,6 +270,11 @@ class Sorceror(CharClass):
 		self.traits = [
 			random.choice(["Draconic Bloodline: PHB pg. 102", "Wild Magic: PHB pg. 103"])
 		]
+		self.goodPerson = []
+		self.interest = []
+		self.externalTrait = []
+		self.place = []
+		self.trade = []
 		
 	def classAlignment(self):
 		return [random.choice(["C", "L", "N"]), random.choice(["G", "N"])]
@@ -241,6 +299,11 @@ class Warlock(CharClass):
 				"Otherwordly Pact: " + random.choice(["The Archfey", "The Fiend", "The Great Old One"]) + ", PHB pg. 108",
 				"Pact Magic: PHB pg. 107"
 		]
+		self.goodPerson = []
+		self.interest = []
+		self.externalTrait = []
+		self.place = []
+		self.trade = []
 		
 	def classAlignment(self):
 		return [random.choice(["C", "L", "N"]), random.choice(["G", "N"])]
@@ -263,6 +326,11 @@ class Wizard(CharClass):
 		self.traits = [
 			"Arcane Recovery: PHB pg. 115"
 		]
+		self.goodPerson = []
+		self.interest = []
+		self.externalTrait = []
+		self.place = []
+		self.trade = []
 		
 	def classAlignment(self):
 		return [random.choice(["C", "L", "N"]), random.choice(["G", "N"])]

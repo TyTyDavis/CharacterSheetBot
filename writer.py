@@ -431,3 +431,37 @@ def writeTraits(image, character):
 		for x in range(len(toPrint)):
 			draw.text((1720, 1600 + line), str(toPrint[x]).replace('"',''),(0,0,0), font=font)
 			line += 46
+			
+def writeFlavor(image, character):
+	line = 0
+	img = image
+	draw = ImageDraw.Draw(img)
+	personalityString = character.personality
+	idealString = character.ideal
+	bondString = character.bond
+	flawString = character.flaw
+		
+	toPrint = textwrap.wrap(personalityString, 40)
+	font = ImageFont.truetype(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\Verdana.ttf",30)
+	for x in range(len(toPrint)):
+		draw.text((1750, 580 + line), str(toPrint[x]).replace("'",""),(0,0,0), font=font)
+		line += 55
+	
+	line = 0
+	toPrint = textwrap.wrap(idealString, 40)
+	for x in range(len(toPrint)):
+		draw.text((1750, 870 + line), str(toPrint[x]).replace("'",""),(0,0,0), font=font)
+		line += 55
+	
+	line = 0	
+	toPrint = textwrap.wrap(bondString, 40)
+	font = ImageFont.truetype(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\Verdana.ttf",30)
+	for x in range(len(toPrint)):
+		draw.text((1750, 1100 + line), str(toPrint[x]).replace("'",""),(0,0,0), font=font)
+		line += 55
+	
+	line = 0
+	toPrint = textwrap.wrap(flawString, 40)
+	for x in range(len(toPrint)):
+		draw.text((1750, 1330 + line), str(toPrint[x]).replace("'",""),(0,0,0), font=font)
+		line += 55

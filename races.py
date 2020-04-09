@@ -16,7 +16,7 @@ class Race:
 		for x in self.languages:	
 			char.languages.append(x)
 		for x in self.skills:	
-			char.skills.append[x] = True
+			char.skills[x] = True
 			
 		char.hp += self.hp * char.level
 		
