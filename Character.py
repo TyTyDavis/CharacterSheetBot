@@ -369,6 +369,6 @@ class Character:
 			
 	def testFlavor(self):
 		self.personality = flavorText.personalityTrait()
-		self.ideal = "Stupid stuff: I really care about stupid stuff, so much, like, its the best"
-		self.bond = "All my friends are dumb idiots. What a bunch of ding dongs, but I love them anyways"
-		self.flaw = "Honestly, I don't htink I have any flaws. I'm pretty dang perfect, yo."
+		self.ideal = flavorText.ideal()
+		self.bond = flavorText.bond()
+		self.flaw = " "

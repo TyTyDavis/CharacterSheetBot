@@ -24,7 +24,7 @@ class CharClass:
 		flavorText.rules['externalTrait'].extend(self.externalTrait)
 		flavorText.rules['place'].extend(self.place)
 		flavorText.rules['trade'].extend(self.trade)
-		
+		flavorText.rules['ideal'].extend(self.ideal)
 class Barbarian(CharClass):
 	def __init__(self):
 		self.name = "Barbarian"
@@ -39,9 +39,13 @@ class Barbarian(CharClass):
 		]
 		self.goodPerson = ['#their# tribal leader']
 		self.interest = ['hunting']
-		self.externalTrait = ['scars', 'face paint', 'animal furs']
+		self.externalTrait = ['scars', 'face paint', 'animal furs', 'face tattoo']
 		self.place = ['#their# ancestral territory']
 		self.trade = ['hunter', 'forager']
+		self.ideal = [
+			'Freedom: #they.capitalize# believe#s# no man should live in chains.',
+			'Independence: No one will tie #them# down, even if it means being alone.',
+		]
 	def classAlignment(self):
 		return ["C", random.choice(["G", "N"])]
 	
@@ -69,6 +73,10 @@ class Bard(CharClass):
 		self.externalTrait = ['costume', 'diction', 'voice']
 		self.place = ['bardic college', 'performing troupe', 'the theatre']
 		self.trade = ['musician', 'storyteller', 'juggler', 'performer', 'actor', 'comedian', 'singer', 'dancer', 'poet']
+		self.ideal = [
+			'Expression: What the world needs more than anything is a great #performance#.',
+			'Inspiration: #their.capitalize# work seeks to make #their# audience just as #emotion# as #they# #is#.'
+		]
 		
 	def classAlignment(self):
 		return ["C", random.choice(["G", "N"])]
@@ -92,11 +100,15 @@ class Cleric(CharClass):
 		self.traits = [
 			"Divine Domain: PHB pg. 58"
 		]
-		self.goodPerson = []
-		self.interest = []
-		self.externalTrait = []
-		self.place = []
-		self.trade = []
+		self.goodPerson = ['#their# high preist', '#their# diety', '#their# high priestess']
+		self.interest = ['prayer', 'rituals', '#their# diety']
+		self.externalTrait = ['robes', 'holy symbol']
+		self.place = ['church', 'monastery']
+		self.trade = ['preacher']
+		self.ideal = [
+			'Exaltation: #they.capitalize# seek#s# to spread the message of #their# diety across the land.',
+			'Faith: #they.capitalize# want nothing more than to earn the grace of #their# god.'
+		]
 		
 	def classAlignment(self):
 		return [random.choice(["C", "L", "N"]), random.choice(["G", "N"])]
@@ -119,11 +131,15 @@ class Druid(CharClass):
 		self.traits = []
 		self.languages = ["Druidic"]
 		
-		self.goodPerson = []
-		self.interest = []
-		self.externalTrait = []
-		self.place = []
-		self.trade = []
+		self.goodPerson = ['#their# animal friend']
+		self.interest = ['nature', 'animals', 'frolicking']
+		self.externalTrait = ['face paint']
+		self.place = ['wilderness', 'jungle']
+		self.trade = ['tracker', 'forager', 'survivalist']
+		self.ideal = [
+			'Conservation: #they.capitalize# will fight to protect the pristine #place# they call home.',
+			'Beauty: #they.capitalize# live to see everything the natural world has to offer.'
+		]
 		
 	def classAlignment(self):
 		return [random.choice(["C", "L", "N"]), random.choice(["G", "N"])]
@@ -144,11 +160,15 @@ class Fighter(CharClass):
 				"Archery: +2 attack bonus with ranged weapons", "Defense: Gain +1 bonus to AC while wearing armor","Dueling: While wielding a melee weapon in one hand and no other weapons, gain +2 to damge rolls","Great Weapon Fighting: When you roll a 1 or 2 on damage die while wielding a two-handed melee weapon, you may reroll and you must use the new roll","Protection: When a creature you see attacks a targer within 5 feet of you, use reaction to impose disadavantage. Must be wielding shield","Two weapon fighting: Add ability modifier to second attack when wielding two weapons"]),
 			"Second Wind: Once per day, regain 1d10 + level HP"
 		]
-		self.goodPerson = []
-		self.interest = []
-		self.externalTrait = []
-		self.place = []
-		self.trade = []
+		self.goodPerson = ['#their# commander', 'an old war buddy']
+		self.interest = ['swords', 'battles']
+		self.externalTrait = ['scars', 'war tattoo', 'awesome armor']
+		self.place = ['battlefield', 'barracks', 'gladiator arena']
+		self.trade = ['wrestler', 'drinker', 'dice player']
+		self.ideal = [
+			'Protector: #they.capitalize# will fight to protect the #place# #they# call#s# home.',
+			'Conquest: #they.capitalize# fight to bring glory to the realm.'
+		]
 		
 	def classAlignment(self):
 		return [random.choice(["C", "L", "N"]), random.choice(["G", "N"])]
@@ -170,10 +190,13 @@ class Monk(CharClass):
 			"Martial arts: PHB pg. 78"
 		]
 		self.goodPerson = ['#their# sensei']
-		self.interest = []
-		self.externalTrait = []
-		self.place = []
-		self.trade = []
+		self.interest = ['meditating', 'proverbs']
+		self.externalTrait = ['robes']
+		self.place = ['monastery', 'mountains']
+		self.trade = ['teacher']
+		self.ideal = [
+			'Enlightenment: #they.capitalize# seek the one true path through the study of #interest#.',
+		]
 		
 	def classAlignment(self):
 		return [random.choice(["C", "L", "N"]), random.choice(["G", "N"])]
@@ -193,11 +216,15 @@ class Paladin(CharClass):
 			"Divine Sense: PHB pg. 84",
 			"Lay on Hands: PHB pg. 84"
 		]
-		self.goodPerson = []
-		self.interest = []
-		self.externalTrait = []
-		self.place = []
-		self.trade = []
+		self.goodPerson = ['#their# priest', '#their# diety']
+		self.interest = ['scripture']
+		self.externalTrait = ['armor']
+		self.place = ['castle', 'keep', 'battlefield']
+		self.trade = ['leader']
+		self.ideal = [
+			'Protector: #they.capitalize# will fight to protect the #place# #they# call#s# home.',
+			'Conquest: #they.capitalize# fight to bring glory to #their# diety.'
+		]
 		
 	def classAlignment(self):
 		return ["L", random.choice(["G", "N"])]
@@ -217,11 +244,15 @@ class Ranger(CharClass):
 			"Favored Enemy: " + random.choice(["Aberrations", " Beasts", "Celestials", "Constructs", "Dragons", "Elementals", "Fey", "Fiends", "Giants", "Monstrosities", "Oozes", "Plants", "Undead"]) + ", PHB pg. 91",
 			"Natural Explorer: PHB pg. 91"
 		]
-		self.goodPerson = []
-		self.interest = []
-		self.externalTrait = []
-		self.place = []
-		self.trade = []
+		self.goodPerson = ['#their# animal friend', 'an old hermit', 'a mountain man']
+		self.interest = ['hunting', 'archery', 'camping', 'climbing']
+		self.externalTrait = ['furs', 'long hair']
+		self.place = ['wilderness', 'tundra', 'desert', 'mountains']
+		self.trade = ['survivalist', 'hunter', 'tracker', 'marksman', 'climber', 'swimming']
+		self.ideal = [
+			'Conservation: #they.capitalize# will fight to protect the pristine #place# they call home.',
+			'Beauty: #they.capitalize# live to see everything the natural world has to offer.'
+		]
 	
 	def classAlignment(self):
 		return [random.choice(["C", "L", "N"]), random.choice(["G", "N"])]
@@ -243,11 +274,16 @@ class Rogue(CharClass):
 			"Sneak Attack: Extra 1d6 damage if you have advantage on attack, using finesse or ranged weapon",
 			"Thieves Cant: Communicatge with other thieves using secret dialect, jargon and code"
 		]
-		self.goodPerson = []
-		self.interest = []
-		self.externalTrait = []
-		self.place = []
-		self.trade = []
+		self.goodPerson = ['an infamous thief', '#their# gang leader']
+		self.interest = ['con artistry', 'breaking the rules', 'breaking the law']
+		self.externalTrait = ['hood', 'mask', 'cloak', 'tattoo']
+		self.place = ['jail', 'streets', 'back alleys', 'high seas']
+		self.trade = ['pickpocket', 'liar', 'actor', 'climber', 'lockpick']
+		self.ideal = [
+			'Freedom: #they.capitalize# believe#s# no man should live in chains.',
+			'Aptitude: #they.capitalize# seek to become the best #trade# the world has ever known.',
+			'Infamy: #they.capitalize# believe#s# the only thing better than attracting fans is attracting enemies.'
+		]
 		
 	def classAlignment(self):
 		return ["C", random.choice(["G", "N"])]
@@ -270,11 +306,15 @@ class Sorceror(CharClass):
 		self.traits = [
 			random.choice(["Draconic Bloodline: PHB pg. 102", "Wild Magic: PHB pg. 103"])
 		]
-		self.goodPerson = []
-		self.interest = []
-		self.externalTrait = []
-		self.place = []
-		self.trade = []
+		self.goodPerson = ['#their# arcane mentor']
+		self.interest = ['ancient magic', 'long forgotten secrets', 'the multiverse']
+		self.externalTrait = ['sense of mystery']
+		self.place = ['arcanum']
+		self.trade = ['mixologist', 'alchemist', 'magician']
+		self.ideal = [
+			'Knowledge: #they.capitalize# are always hungry to learn more about #interest#.',
+			'Power: #they.capitalize# seek the arcane means to learn the secrets of #interest#.',
+		]
 		
 	def classAlignment(self):
 		return [random.choice(["C", "L", "N"]), random.choice(["G", "N"])]
@@ -299,11 +339,15 @@ class Warlock(CharClass):
 				"Otherwordly Pact: " + random.choice(["The Archfey", "The Fiend", "The Great Old One"]) + ", PHB pg. 108",
 				"Pact Magic: PHB pg. 107"
 		]
-		self.goodPerson = []
-		self.interest = []
-		self.externalTrait = []
-		self.place = []
-		self.trade = []
+		self.goodPerson = ['#their# coven leader']
+		self.interest = ['dark secrets', 'ancient terrors', 'forbidden tomes']
+		self.externalTrait = ['raven black hair', 'piercing eyes']
+		self.place = ['lair', 'Underdark', 'unspeakable place']
+		self.trade = ['murderer']
+		self.ideal = [
+			'Knowledge: #they.capitalize# are always hungry to learn more about #interest#.',
+			'Power: #they.capitalize# seek the arcane means to learn the secrets of #interest#.',
+		]
 		
 	def classAlignment(self):
 		return [random.choice(["C", "L", "N"]), random.choice(["G", "N"])]
@@ -326,12 +370,15 @@ class Wizard(CharClass):
 		self.traits = [
 			"Arcane Recovery: PHB pg. 115"
 		]
-		self.goodPerson = []
-		self.interest = []
-		self.externalTrait = []
-		self.place = []
-		self.trade = []
-		
+		self.goodPerson = ['#their# professor', '#their# top student']
+		self.interest = ['old dusty books', 'theoretical magic', 'the cosmos']
+		self.externalTrait = ['robes', 'spellbook']
+		self.place = ['library', 'university', 'tower', 'arcanum']
+		self.trade = ['achemist', 'writer', 'philosopher', 'researcher']
+		self.ideal = [
+			'Knowledge: #they.capitalize# are always hungry to learn more about #interest#.',
+			'Destiny: #they.capitalize# are drawn to the study of #interest# by an unseen force.',
+		]
 	def classAlignment(self):
 		return [random.choice(["C", "L", "N"]), random.choice(["G", "N"])]
 	
