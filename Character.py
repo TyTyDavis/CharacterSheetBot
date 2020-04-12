@@ -371,4 +371,4 @@ class Character:
 		self.personality = flavorText.personalityTrait()
 		self.ideal = flavorText.ideal()
 		self.bond = flavorText.bond()
-		self.flaw = " "
+		self.flaw = flavorText.flaw()

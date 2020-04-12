@@ -72,7 +72,7 @@ def writeClass(image, characterClass):
 def writeRace(image, race):
 	img = image
 	draw = ImageDraw.Draw(img)
-	font = ImageFont.truetype(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\Verdana.ttf",60)
+	font = ImageFont.truetype(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\Verdana.ttf",50)
 	draw.text((1130, 310), race,(0,0,0), font=font)
 	
 def writeHP(image, hp):

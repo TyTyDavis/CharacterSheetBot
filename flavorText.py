@@ -13,7 +13,7 @@ rules = {
 	'personality': [
 		'#they.capitalize# look#s# up to #goodPerson#, and constatly refers to that person\'s deeds and example.',
 		'#they.capitalize# #is# #tolerant# of other faiths and the worship of other gods.',
-		'#they.capitalize# #has# spent so long in the #place# that #they# have little understanding of anything outside of it.',
+		'#they.capitalize# #has# spent so long in the #place# that #they# can\'t understand anything outside of it.',
 		'#they.capitalize# #is# a born #trade#, never passing up an opportunity to show off #their# skill.',
 		'#they.capitalize# #is# always #emotion#, often — or especially — when the situation doesn\'t call for it.',
 		'#they.capitalize# #is# #slow# to trust',
@@ -23,15 +23,15 @@ rules = {
 		'#they.capitalize# can\'t get along with people who don\'t #love# #interest#.',
 		'#they.capitalize# like#s# to talk at length about #interest# to anyone who will listen.',
 		'#goodPerson.capitalize# was full of wisdom, and #they# #is# always eager to share that wisdom with others.',
-		'Everyone around #them# thinks #they# are #virtue#.'
+		'Everyone around #them# thinks #they# #is# #virtue#.'
 	],
 	'ideal': [
-		'Loyalty: #they.capitalize# trust#s# that #goodPerson# will guide them towards the right actions.',
+		'Loyalty: #they.capitalize# trust#s# that #goodPerson# will guide #them# towards the right actions.',
 		'Aspiration: #they.capitalize# seek#s# to prove #themselves# to #goodPerson# through #their# deeds.',
 		'Responsibilty: #they.capitalize# will defend the #place#, no matter the cost.',
 		'Aspiration: #they.capitalize# will be the best #trade# the world has ever known.',
 		'People: #they.capitalize# believe#s# in people, especially #goodPerson#, over things or ideas.',
-		'Beauty: #they.capitalize# will share their passion for #interest# with the whole world.',
+		'Beauty: #they.capitalize# will share #their# passion for #interest# with the whole world.',
 		
 	],
 	'bond':[
@@ -39,7 +39,7 @@ rules = {
 		'The #place# #they# grew up is the most important place in the whole world.',
 		'Everything #they# know#s# about being a #trade#, #they# learned from #goodPerson#.',
 		'Everything #they# #is# doing is to try to earn the love of #goodPerson#.',
-		'One day, #they# will return to their home #place# to show everyone how great of a #trade# #they# #is#.',
+		'One day, #they# will return to #their# home #place# to show everyone how great of a #trade# #they# #is#.',
 		'#they.capitalize# will get revenge on #badPerson# that wronged #them#.',
 		'No one is mor important than the other members of #their# #group#.',
 		'#they.capitalize# still can\'t seem to trust the other members of #their# #group#.',
@@ -53,12 +53,20 @@ rules = {
 		'#they.capitalize# work#s# to preserve the dying traditions of the #group#.',
 		'#they.capitalize# #love##s# #goodPerson#.',
 		'#they.capitalize# #love##s# #badPerson#.',
-		'#they.capitalize #is# so #proud# of #goodPerson#.',
+		'#they.capitalize# #is# so #proud# of #goodPerson#.',
 		'People come and go, but #their# #place# will always be there.',
 		'#they.capitalize# will always remember the #place#.',
 		'#they.capitalize# will get #their# revenge on #badPerson#s. All of them.',
 		'The #place# is #their# home, and #they# will fight to defend it.',
-		'#they.capitalize# owe a life debt to #goodPerson#.',
+		'#they.capitalize# owe#s# a life debt to #goodPerson#.',
+	],
+	'flaw': [
+			'#they.capitalize# put#s# too much trust in the people in charge of the #group#.',
+			'#they.capitalize# can often be too #virtue# for #their# own good.',
+			'#they.capitalize# #is# obsessed with #interest# to the detriment of everything else.',
+			'#they.capitalize# can\'t resist a #virtue# person.',
+			'#they.capitalize# spend#s# all of #their# coin on #interest#.',
+			
 	],
 	'tolerant': ['tolerant', 'intolerant'],
 	'slow': ['slow', 'fast'],
@@ -190,6 +198,11 @@ def bond():
 	grammar = tracery.Grammar(rules)
 	grammar.add_modifiers(base_english)
 	return grammar.flatten("#bond#")
+	
+def flaw():
+	grammar = tracery.Grammar(rules)
+	grammar.add_modifiers(base_english)
+	return grammar.flatten("#flaw#")
 
 
 

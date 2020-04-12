@@ -167,7 +167,7 @@ class Fighter(CharClass):
 		self.trade = ['wrestler', 'drinker', 'dice player']
 		self.ideal = [
 			'Protector: #they.capitalize# will fight to protect the #place# #they# call#s# home.',
-			'Conquest: #they.capitalize# fight to bring glory to the realm.'
+			'Conquest: #they.capitalize# fight#s# to bring glory to the realm.'
 		]
 		
 	def classAlignment(self):
@@ -223,7 +223,7 @@ class Paladin(CharClass):
 		self.trade = ['leader']
 		self.ideal = [
 			'Protector: #they.capitalize# will fight to protect the #place# #they# call#s# home.',
-			'Conquest: #they.capitalize# fight to bring glory to #their# diety.'
+			'Conquest: #they.capitalize# fight#s# to bring glory to #their# diety.'
 		]
 		
 	def classAlignment(self):
