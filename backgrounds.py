@@ -41,7 +41,7 @@ class Charlatan(Background):
 	gp = 15
 	traits = ["False Identity: You have created a second identity that includes documentation, acquintances, and disguises. PHB pg. 128"]
 	bond = [
-		'#they.capitalize# owe#s# everything to their mentor, who is currently rotting in jail.',
+		'#they.capitalize# owe#s# everything to #their# mentor, who is currently rotting in jail.',
 		'#they.capitalize# fleeced the wrong person, and #they# must now avoid that person for the rest of #their# life.',
 		'#they.capitalize# swindled a person who didn\'t deserve it. #they.capitalize# seek to atone for their misdeeds.'
 	]
@@ -261,7 +261,7 @@ class Urchin(Background):
 	gp = 10
 	traits = ["City Secrets: You know the secret patterns and flow to cities. PHB pg. 141"]
 	bond = [
-		'#they.capitalize# owe#s# #their# live to #goodPerson, who taught them to survive on the streets.',
+		'#they.capitalize# owe#s# #their# life to #goodPerson#, who taught #them# to survive on the streets.',
 		'#they.capitalize# fought #their# way out of poverty by robbing #badPerson#, and #they# #is# wanted for it.',
 		'#they.capitalize# give#s# to the poor to prevent others from going through what #they endured.'
 	]

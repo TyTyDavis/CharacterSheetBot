@@ -9,24 +9,25 @@ import classes
 import backgrounds
 import tracery
 from tracery.modifiers import base_english
+import flavorText
 
 
 """
 To do next time:
-add in tracery to write flavor text
+get SSA name list cleaned up and into silly name list
 
-
-Things to fix:
-Silly names not appearing
 
 Tweaks to make:
 tweak name lists
 """
+
+#generate character data
 char = Character()
 img = Image.open(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\blankSheet.png")
-char.setName()
 char.setAbilities()
 char.setClass()
+char.silly = True
+char.setName()
 char.characterClass.classModifiers(char)
 char.setRace()
 char.race.racialModifiers(char)
@@ -38,7 +39,10 @@ char.setSpeed()
 char.setSkills()
 char.setEquipment()
 char.setSpells()
-char.testFlavor()
+char.setSilly()
+char.setFlavor()
+
+#write data onto character sheet image
 writer.writeName(img, char.name)
 writer.writeAbilities(img, char.abilities)
 writer.writeClass(img, char.characterClass)
@@ -60,6 +64,12 @@ writer.writeProficiencies(img, char)
 writer.writeTraits(img, char)
 writer.writeFlavor(img, char)
 img.save(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\newSheet.png")
+
+#output a bunch of flavor text in order to test for grammatical errors
+File1 = open(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\textTest.txt","w")
+File1.writelines(flavorText.testText())
+File1.close()
+
 print(char.gender)
 print("Silly:" + str(char.silly))
 print(char.caster)

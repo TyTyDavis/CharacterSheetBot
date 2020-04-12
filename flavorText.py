@@ -23,7 +23,10 @@ rules = {
 		'#they.capitalize# can\'t get along with people who don\'t #love# #interest#.',
 		'#they.capitalize# like#s# to talk at length about #interest# to anyone who will listen.',
 		'#goodPerson.capitalize# was full of wisdom, and #they# #is# always eager to share that wisdom with others.',
-		'Everyone around #them# thinks #they# #is# #virtue#.'
+		'Everyone around #them# thinks #they# #is# #virtue#.',
+		'#they.capitalize# #is# #tolerant# of people who break the law.',
+		'#they.capitalize# really really #love##s# #monsters#.'
+		'#they.capitalize# #is# terrified by #monsters#.',
 	],
 	'ideal': [
 		'Loyalty: #they.capitalize# trust#s# that #goodPerson# will guide #them# towards the right actions.',
@@ -31,7 +34,7 @@ rules = {
 		'Responsibilty: #they.capitalize# will defend the #place#, no matter the cost.',
 		'Aspiration: #they.capitalize# will be the best #trade# the world has ever known.',
 		'People: #they.capitalize# believe#s# in people, especially #goodPerson#, over things or ideas.',
-		'Beauty: #they.capitalize# will share #their# passion for #interest# with the whole world.',
+		'Passion: #they.capitalize# will share #their# passion for #interest# with the whole world.',
 		
 	],
 	'bond':[
@@ -41,9 +44,9 @@ rules = {
 		'Everything #they# #is# doing is to try to earn the love of #goodPerson#.',
 		'One day, #they# will return to #their# home #place# to show everyone how great of a #trade# #they# #is#.',
 		'#they.capitalize# will get revenge on #badPerson# that wronged #them#.',
-		'No one is mor important than the other members of #their# #group#.',
+		'No one is more important than the other members of #their# #group#.',
 		'#they.capitalize# still can\'t seem to trust the other members of #their# #group#.',
-		'#they.capitalize# are chasing #badPerson# that killed #goodPerson#.',
+		'#they.capitalize# #is# chasing #badPerson# that killed #goodPerson#.',
 		'#they.capitalize# find#s# it hard to care again after losing #goodPerson#.',
 		'#they.capitalize# will face any challenge to win the approval of the #group#.',
 		'#they.capitalize# will use #their# #group# for as long as it helps #themselves#.',
@@ -59,6 +62,7 @@ rules = {
 		'#they.capitalize# will get #their# revenge on #badPerson#s. All of them.',
 		'The #place# is #their# home, and #they# will fight to defend it.',
 		'#they.capitalize# owe#s# a life debt to #goodPerson#.',
+		'#they.capitalize# will slay the #monsters#. All of them.'
 	],
 	'flaw': [
 			'#they.capitalize# put#s# too much trust in the people in charge of the #group#.',
@@ -75,8 +79,13 @@ rules = {
 	'trade': [
 		'gambler',
 		'drinker',
-		'pick up artist',
 		'orator',
+		'leader',
+		'adventurer',
+		'explorer',
+		'hero',
+		
+		
 	],
 	'place': [
 		'temple', 
@@ -105,7 +114,14 @@ rules = {
 		'patient',
 		'loving',
 		'bored',
-		'tired'
+		'tired',
+		'afraid',
+		'cruel',
+		'grumpy',
+		'crabby',
+		'grouchy',
+		'insecure',
+		'proud'
 	],
 	'virtue': [
 		'intelligent',
@@ -169,8 +185,19 @@ rules = {
 		'the warlock',
 		'the troll',
 		'the ogre',
-		'the king',
-		
+		'the king'
+	],
+	'monsters': [
+		'goblins',
+		'dragons',
+		'ogres',
+		'trolls',
+		'kobolds',
+		'gnolls',
+		'zombies',
+		'centaurs',
+		'hobgoblins',
+		'demons',
 	],
 	'group': [
 		'guild',
@@ -204,10 +231,17 @@ def flaw():
 	grammar.add_modifiers(base_english)
 	return grammar.flatten("#flaw#")
 
+def testText():
+	lines = []
+	x = 0
+	while x < 40:
+		lines.append(str(flaw() + '\n'))
+		lines.append(str(bond() + '\n'))
+		lines.append(str(ideal() + '\n'))
+		lines.append(str(personalityTrait() + '\n'))
+		x +=1
+		
+	return lines
 
 
 
-
-
-#'setGender': [{'they': 'they', 'them': 'them', 'their': 'their', 'theirs': 'theirs'}, {'they': 'he', 'them': 'him', 'their': 'his', 'his': 'theirs'}, {'they': 'she', 'them': 'her', 'their': 'her', 'theirs': 'hers'}],
-	

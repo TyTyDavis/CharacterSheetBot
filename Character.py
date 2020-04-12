@@ -176,8 +176,16 @@ class Character:
 			flavorText.rules['themselves'] = "themselves"
 			flavorText.rules['has'] = "have"
 			flavorText.rules['s'] = ""
+		
 		if self.silly == True:
 			lastName = r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\silly_last_names.txt"
+			if self.gender == "M":
+				firstName = r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\silly_name_male.txt"
+			if self.gender == "F":
+				firstName = r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\silly_name_female.txt"
+			else:
+				firstName = random.choice([r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\silly_name_male.txt", r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\silly_name_female.txt"])
+				
 		else: 
 			lastName = r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\last_name.txt"
 		self.name = fantasy_name_generator.name_builder(firstName, lastName)
@@ -332,6 +340,59 @@ class Character:
 	def setBackground(self):
 		self.background = random.choice(backgrounds)
 	
+	def setSilly(self):
+		if self.silly == False:
+			pass
+		else:
+			sillyTrade = [
+				'dude',
+				'D&D character',
+				'pretend wizard',
+				'friend',
+				'knitter',
+				'bro',
+				'boy'
+			]
+			sillyExternalTrait = [
+				'mustache',
+				'sweet shoes',
+				'rad hairdo',
+				'big pants',
+				'puffy shirt',
+				'butt',
+				'weird chin',
+				'small hands',
+				'big hands',
+				'beard',
+				'chest',
+				'many rings',
+				'oversized hat'
+			]
+			sillyVirtue = [
+				'cool as hell',
+				'rowdy',
+				'big',
+				'thicc',
+				'silly',
+				
+			]
+			
+			sillyInterest = [
+				'dragon stuff',
+				'dungeon stuff',
+				'fantasy things',
+				'wizarding',
+				'fireballs',
+				'owlbears',
+				'tacos',
+				'craft beer',
+			]
+			
+			flavorText.rules['trade'].extend(sillyTrade)
+			flavorText.rules['externalTrait'].extend(sillyExternalTrait)
+			flavorText.rules['virtue'].extend(sillyVirtue)
+			flavorText.rules['interest'].extend(sillyInterest)
+			
 	def testEquipment(self):
 		self.equipment = ["shortsword", "dagger", "buckler", "pouch", "lucky coin", "ink bottle", "flint and steel", "parchment"]
 		self.GP = 3
@@ -367,7 +428,7 @@ class Character:
 				"Survival": True
 			}
 			
-	def testFlavor(self):
+	def setFlavor(self):
 		self.personality = flavorText.personalityTrait()
 		self.ideal = flavorText.ideal()
 		self.bond = flavorText.bond()

@@ -41,7 +41,7 @@ class Barbarian(CharClass):
 		self.interest = ['hunting']
 		self.externalTrait = ['scars', 'face paint', 'animal furs', 'face tattoo']
 		self.place = ['#their# ancestral territory']
-		self.trade = ['hunter', 'forager']
+		self.trade = ['barbarian', 'warrior', 'hunter', 'forager', 'arm wrestler', 'mercenary']
 		self.ideal = [
 			'Freedom: #they.capitalize# believe#s# no man should live in chains.',
 			'Independence: No one will tie #them# down, even if it means being alone.',
@@ -71,8 +71,8 @@ class Bard(CharClass):
 		self.goodPerson = ['#their# favorite songwriter', '#their# favorite poet', 'the main character of #their# unfinished book']
 		self.interest = ['poetry', 'obscure songs', 'fairytales', 'sonnets', 'dirty limericks', 'the theatre']
 		self.externalTrait = ['costume', 'diction', 'voice']
-		self.place = ['bardic college', 'performing troupe', 'the theatre']
-		self.trade = ['musician', 'storyteller', 'juggler', 'performer', 'actor', 'comedian', 'singer', 'dancer', 'poet']
+		self.place = ['bardic college', 'performing troupe', 'theatre', 'stage', 'road']
+		self.trade = ['bard', 'musician', 'storyteller', 'juggler', 'performer', 'actor', 'comedian', 'singer', 'dancer', 'poet', 'puppeteer', 'clown']
 		self.ideal = [
 			'Expression: What the world needs more than anything is a great #performance#.',
 			'Inspiration: #their.capitalize# work seeks to make #their# audience just as #emotion# as #they# #is#.'
@@ -104,7 +104,7 @@ class Cleric(CharClass):
 		self.interest = ['prayer', 'rituals', '#their# diety']
 		self.externalTrait = ['robes', 'holy symbol']
 		self.place = ['church', 'monastery']
-		self.trade = ['preacher']
+		self.trade = ['preacher', 'healer', 'cleric']
 		self.ideal = [
 			'Exaltation: #they.capitalize# seek#s# to spread the message of #their# diety across the land.',
 			'Faith: #they.capitalize# want nothing more than to earn the grace of #their# god.'
@@ -134,8 +134,8 @@ class Druid(CharClass):
 		self.goodPerson = ['#their# animal friend']
 		self.interest = ['nature', 'animals', 'frolicking']
 		self.externalTrait = ['face paint']
-		self.place = ['wilderness', 'jungle']
-		self.trade = ['tracker', 'forager', 'survivalist']
+		self.place = ['wilderness', 'jungle', 'enchanted woods', 'mysterious forest']
+		self.trade = ['tracker', 'forager', 'survivalist', 'climber', 'druid']
 		self.ideal = [
 			'Conservation: #they.capitalize# will fight to protect the pristine #place# they call home.',
 			'Beauty: #they.capitalize# live to see everything the natural world has to offer.'
@@ -164,7 +164,7 @@ class Fighter(CharClass):
 		self.interest = ['swords', 'battles']
 		self.externalTrait = ['scars', 'war tattoo', 'awesome armor']
 		self.place = ['battlefield', 'barracks', 'gladiator arena']
-		self.trade = ['wrestler', 'drinker', 'dice player']
+		self.trade = ['wrestler', 'arm wrestler', 'warrior', 'fighter', 'soldier', 'mercenary', 'dragon slayer', 'monster hunter']
 		self.ideal = [
 			'Protector: #they.capitalize# will fight to protect the #place# #they# call#s# home.',
 			'Conquest: #they.capitalize# fight#s# to bring glory to the realm.'
@@ -193,7 +193,7 @@ class Monk(CharClass):
 		self.interest = ['meditating', 'proverbs']
 		self.externalTrait = ['robes']
 		self.place = ['monastery', 'mountains']
-		self.trade = ['teacher']
+		self.trade = ['teacher', 'meditator', 'monk', 'martial artist', 'warrior']
 		self.ideal = [
 			'Enlightenment: #they.capitalize# seek the one true path through the study of #interest#.',
 		]
@@ -220,7 +220,7 @@ class Paladin(CharClass):
 		self.interest = ['scripture']
 		self.externalTrait = ['armor']
 		self.place = ['castle', 'keep', 'battlefield']
-		self.trade = ['leader']
+		self.trade = ['leader', 'knight', 'warrior', 'paladin']
 		self.ideal = [
 			'Protector: #they.capitalize# will fight to protect the #place# #they# call#s# home.',
 			'Conquest: #they.capitalize# fight#s# to bring glory to #their# diety.'
@@ -247,8 +247,8 @@ class Ranger(CharClass):
 		self.goodPerson = ['#their# animal friend', 'an old hermit', 'a mountain man']
 		self.interest = ['hunting', 'archery', 'camping', 'climbing']
 		self.externalTrait = ['furs', 'long hair']
-		self.place = ['wilderness', 'tundra', 'desert', 'mountains']
-		self.trade = ['survivalist', 'hunter', 'tracker', 'marksman', 'climber', 'swimming']
+		self.place = ['wilderness', 'tundra', 'desert', 'mountains', 'enchanted forest', 'campsite']
+		self.trade = ['ranger', 'warrior', 'survivalist', 'hunter', 'tracker', 'marksman', 'climber', 'swimmer']
 		self.ideal = [
 			'Conservation: #they.capitalize# will fight to protect the pristine #place# they call home.',
 			'Beauty: #they.capitalize# live to see everything the natural world has to offer.'
@@ -278,7 +278,7 @@ class Rogue(CharClass):
 		self.interest = ['con artistry', 'breaking the rules', 'breaking the law']
 		self.externalTrait = ['hood', 'mask', 'cloak', 'tattoo']
 		self.place = ['jail', 'streets', 'back alleys', 'high seas']
-		self.trade = ['pickpocket', 'liar', 'actor', 'climber', 'lockpick']
+		self.trade = ['pickpocket', 'liar', 'actor', 'climber', 'lockpicker', 'thief', 'criminal', 'rogue', 'con artist']
 		self.ideal = [
 			'Freedom: #they.capitalize# believe#s# no man should live in chains.',
 			'Aptitude: #they.capitalize# seek to become the best #trade# the world has ever known.',
@@ -310,7 +310,7 @@ class Sorceror(CharClass):
 		self.interest = ['ancient magic', 'long forgotten secrets', 'the multiverse']
 		self.externalTrait = ['sense of mystery']
 		self.place = ['arcanum']
-		self.trade = ['mixologist', 'alchemist', 'magician']
+		self.trade = ['alchemist', 'magician', 'mage', 'sorceror', 'conjurer', 'magic-user', 'evoker']
 		self.ideal = [
 			'Knowledge: #they.capitalize# are always hungry to learn more about #interest#.',
 			'Power: #they.capitalize# seek the arcane means to learn the secrets of #interest#.',
@@ -343,7 +343,7 @@ class Warlock(CharClass):
 		self.interest = ['dark secrets', 'ancient terrors', 'forbidden tomes']
 		self.externalTrait = ['raven black hair', 'piercing eyes']
 		self.place = ['lair', 'Underdark', 'unspeakable place']
-		self.trade = ['murderer']
+		self.trade = ['murderer', 'warlock', 'mage', 'magic-user']
 		self.ideal = [
 			'Knowledge: #they.capitalize# are always hungry to learn more about #interest#.',
 			'Power: #they.capitalize# seek the arcane means to learn the secrets of #interest#.',
@@ -374,7 +374,7 @@ class Wizard(CharClass):
 		self.interest = ['old dusty books', 'theoretical magic', 'the cosmos']
 		self.externalTrait = ['robes', 'spellbook']
 		self.place = ['library', 'university', 'tower', 'arcanum']
-		self.trade = ['achemist', 'writer', 'philosopher', 'researcher']
+		self.trade = ['achemist', 'writer', 'philosopher', 'researcher', 'mage', 'magic-user', 'wizard', 'conjurer', 'evoker']
 		self.ideal = [
 			'Knowledge: #they.capitalize# are always hungry to learn more about #interest#.',
 			'Destiny: #they.capitalize# are drawn to the study of #interest# by an unseen force.',
