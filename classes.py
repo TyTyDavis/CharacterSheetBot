@@ -138,7 +138,7 @@ class Druid(CharClass):
 		self.trade = ['tracker', 'forager', 'survivalist', 'climber', 'druid']
 		self.ideal = [
 			'Conservation: #they.capitalize# will fight to protect the pristine #place# they call home.',
-			'Beauty: #they.capitalize# live to see everything the natural world has to offer.'
+			'Beauty: #they.capitalize# live#s# to see everything the natural world has to offer.'
 		]
 		
 	def classAlignment(self):
