@@ -167,8 +167,8 @@ class Noble(Background):
 	]
 	flaw= [
 		'#they.capitalize# believe#s# that everyone is beneath #them#.',
-		'#they.capitalize# hide#s# a shameful secret that could ruin #their family forever.',
-		'By #their# words and actions, #they# often bring shame to #their# family.'
+		'#they.capitalize# hide#s# a shameful secret that could ruin #their# family forever.',
+		'By #their# words and actions, #they# often bring#s# shame to #their# family.'
 	]
 	
 class Outlander(Background):

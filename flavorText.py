@@ -39,7 +39,7 @@ rules = {
 	],
 	'bond':[
 		'The death of #goodPerson# had a huge impact on how #they# form#s# connections with others.',
-		'The #place# #they# grew up is the most important place in the whole world.',
+		'The #place# #they# grew up in is the most important place in the whole world.',
 		'Everything #they# know#s# about being a #trade#, #they# learned from #goodPerson#.',
 		'Everything #they# #is# doing is to try to earn the love of #goodPerson#.',
 		'One day, #they# will return to #their# home #place# to show everyone how great of a #trade# #they# #is#.',

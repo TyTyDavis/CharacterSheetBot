@@ -10,6 +10,7 @@ import backgrounds
 import tracery
 from tracery.modifiers import base_english
 import flavorText
+import twitterBot
 
 
 """
@@ -26,7 +27,7 @@ char = Character()
 img = Image.open(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\blankSheet.png")
 char.setAbilities()
 char.setClass()
-char.silly = True
+#char.silly = True
 char.setName()
 char.characterClass.classModifiers(char)
 char.setRace()
@@ -64,6 +65,10 @@ writer.writeProficiencies(img, char)
 writer.writeTraits(img, char)
 writer.writeFlavor(img, char)
 img.save(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\newSheet.png")
+
+#post to twitter
+twitterBot.postSheet(char)
+
 
 #output a bunch of flavor text in order to test for grammatical errors
 File1 = open(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\textTest.txt","w")
