@@ -25,7 +25,7 @@ rules = {
 		'#goodPerson.capitalize# was full of wisdom, and #they# #is# always eager to share that wisdom with others.',
 		'Everyone around #them# thinks #they# #is# #virtue#.',
 		'#they.capitalize# #is# #tolerant# of people who break the law.',
-		'#they.capitalize# really really #love##s# #monsters#.'
+		'#they.capitalize# really really #love##s# #monsters#.',
 		'#they.capitalize# #is# terrified by #monsters#.',
 	],
 	'ideal': [

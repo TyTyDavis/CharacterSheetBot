@@ -11,20 +11,13 @@ import tracery
 from tracery.modifiers import base_english
 import flavorText
 import twitterBot
+import os
 
-
-"""
-To do next time:
-get SSA name list cleaned up and into silly name list
-
-
-Tweaks to make:
-tweak name lists
-"""
-
+#python.exe C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\testEnvironment.py
+ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
 #generate character data
 char = Character()
-img = Image.open(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\blankSheet.png")
+img = Image.open(os.path.join(ROOT_DIR, "blankSheet.png"))
 char.setAbilities()
 char.setClass()
 #char.silly = True
@@ -64,16 +57,16 @@ writer.writeBackground(img, char)
 writer.writeProficiencies(img, char)
 writer.writeTraits(img, char)
 writer.writeFlavor(img, char)
-img.save(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\newSheet.png")
+img.save(os.path.join(ROOT_DIR, "newSheet.png"))
 
 #post to twitter
-twitterBot.postSheet(char)
+#twitterBot.postSheet(char)
 
 
 #output a bunch of flavor text in order to test for grammatical errors
-File1 = open(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\textTest.txt","w")
-File1.writelines(flavorText.testText())
-File1.close()
+#File1 = open(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\textTest.txt","w")
+#File1.writelines(flavorText.testText())
+#File1.close()
 
 print(char.gender)
 print("Silly:" + str(char.silly))

@@ -10,6 +10,7 @@ import races
 import tracery
 from tracery.modifiers import base_english
 import flavorText
+ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
 
 martialWeapons = [
 	weapons.Battleaxe(), 
@@ -145,9 +146,14 @@ class Character:
 	def setName(self):
 		firstName = None
 		LastName = None
-		
+		maleNames = os.path.join(ROO_DIR, "first_name_male.txt")
+		sillyMaleNames = os.path.join(ROOT_DIR, "silly_name_male.txt")
+		femaleNames = os.path.join(ROOT_DIR, "first_name_female.txt")
+		sillyFemaleNames = os.path.join(ROOT_DIR, "silly_name_female.txt")
+		lastNames = os.path.join(ROOT_DIR, "last_name.txt")
+		sillyLastNames = os.path.join(ROOT_DIR, "silly_last_names.txt")
 		if self.gender == "M":
-			firstName = r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\first_name_female.txt"
+			firstName = maleNames
 			flavorText.rules['they'] = "he"
 			flavorText.rules['them'] = "him"
 			flavorText.rules['their'] = "his"
@@ -157,7 +163,7 @@ class Character:
 			flavorText.rules['has'] = "has"
 			flavorText.rules['s'] = "s"
 		elif self.gender == "F":
-			firstName = r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\first_name_female.txt"
+			firstName = femaleNames
 			flavorText.rules['they'] = "she"
 			flavorText.rules['them'] = "her"
 			flavorText.rules['their'] = "her"
@@ -167,7 +173,7 @@ class Character:
 			flavorText.rules['has'] = "has"
 			flavorText.rules['s'] = "s"
 		else:
-			firstName = random.choice([r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\first_name_male.txt", r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\first_name_female.txt"])
+			firstName = random.choice([maleNames, femaleNames])
 			flavorText.rules['they'] = "they"
 			flavorText.rules['them'] = "them"
 			flavorText.rules['their'] = "their"
@@ -178,16 +184,16 @@ class Character:
 			flavorText.rules['s'] = ""
 		
 		if self.silly == True:
-			lastName = r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\silly_last_names.txt"
+			lastName = sillyLastNames
 			if self.gender == "M":
-				firstName = r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\silly_name_male.txt"
+				firstName = sillyMaleNames
 			if self.gender == "F":
-				firstName = r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\silly_name_female.txt"
+				firstName = sillyFemaleNames
 			else:
-				firstName = random.choice([r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\silly_name_male.txt", r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\silly_name_female.txt"])
+				firstName = random.choice([sillyMaleNames, sillyFemaleNames])
 				
 		else: 
-			lastName = r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\last_name.txt"
+			lastName = lastNames
 		self.name = fantasy_name_generator.name_builder(firstName, lastName)
 		
 	def setAbilities(self):
