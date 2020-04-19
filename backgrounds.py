@@ -43,7 +43,7 @@ class Charlatan(Background):
 	bond = [
 		'#they.capitalize# owe#s# everything to #their# mentor, who is currently rotting in jail.',
 		'#they.capitalize# fleeced the wrong person, and #they# must now avoid that person for the rest of #their# life.',
-		'#they.capitalize# swindled a person who didn\'t deserve it. #they.capitalize# seek to atone for their misdeeds.'
+		'#they.capitalize# swindled a person who didn\'t deserve it. #they.capitalize# seek#s# to atone for #their# misdeeds.'
 	]
 	flaw= [
 		'#they.capitalize# can\'t resist a pretty face.',
@@ -246,7 +246,7 @@ class Soldier(Background):
 		'#they.capitalize# fight for those who cannot fight for themselves.'
 	]
 	flaw= [
-		'The enemey #they# faced in battle still leaves #them# quivering in fear.',
+		'The enemy #they# faced in battle still leaves #them# quivering in fear.',
 		'#they.capitalize# #has# little respect for anyone who isn\'t a proven warrior.',
 		'#they.capitalize# obey#s# the law, even if the law causes misery.'
 	]

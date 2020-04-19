@@ -10,6 +10,7 @@ import races
 import tracery
 from tracery.modifiers import base_english
 import flavorText
+import os
 ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
 
 martialWeapons = [
@@ -31,7 +32,7 @@ martialWeapons = [
 	weapons.Warhammer(), 
 	weapons.Whip()
 	]
-martialRangedWeapons = [weapons.Longbow()] #update!
+martialRangedWeapons = [weapons.Longbow(), Blowgun(), HandCrossbow(), HeavyCrossbow(), Longbow()]
 simpleWeapons = [
 	weapons.Club(), 
 	weapons.Dagger(), 
@@ -40,7 +41,7 @@ simpleWeapons = [
 	weapons.Mace(), weapons.Quarterstaff(), 
 	weapons.Sickle(), 
 	weapons.Spear()]
-simpleRangedWeapons = [weapons.Dart()] #update~
+simpleRangedWeapons = [weapons.Dart(), LightCrossbow(), Shortbow()]
 lightArmor = [
 	armors.Padded(), 
 	armors.Leather(), 
@@ -146,7 +147,7 @@ class Character:
 	def setName(self):
 		firstName = None
 		LastName = None
-		maleNames = os.path.join(ROO_DIR, "first_name_male.txt")
+		maleNames = os.path.join(ROOT_DIR, "first_name_male.txt")
 		sillyMaleNames = os.path.join(ROOT_DIR, "silly_name_male.txt")
 		femaleNames = os.path.join(ROOT_DIR, "first_name_female.txt")
 		sillyFemaleNames = os.path.join(ROOT_DIR, "silly_name_female.txt")

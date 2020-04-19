@@ -12,9 +12,11 @@ from tracery.modifiers import base_english
 import flavorText
 import twitterBot
 import os
+import time
+import schedule
 
-#python.exe C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\testEnvironment.py
 ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
+
 #generate character data
 char = Character()
 img = Image.open(os.path.join(ROOT_DIR, "blankSheet.png"))
@@ -58,15 +60,14 @@ writer.writeProficiencies(img, char)
 writer.writeTraits(img, char)
 writer.writeFlavor(img, char)
 img.save(os.path.join(ROOT_DIR, "newSheet.png"))
-
+img.close()
 #post to twitter
 #twitterBot.postSheet(char)
 
-
 #output a bunch of flavor text in order to test for grammatical errors
-#File1 = open(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\textTest.txt","w")
-#File1.writelines(flavorText.testText())
-#File1.close()
+File1 = open(r"C:\Users\wiggi\OneDrive\Documents\CharacterSheetBot\textTest.txt","w")
+File1.writelines(flavorText.testText())
+File1.close()
 
 print(char.gender)
 print("Silly:" + str(char.silly))

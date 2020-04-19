@@ -15,7 +15,7 @@ rules = {
 		'#they.capitalize# #is# #tolerant# of other faiths and the worship of other gods.',
 		'#they.capitalize# #has# spent so long in the #place# that #they# can\'t understand anything outside of it.',
 		'#they.capitalize# #is# a born #trade#, never passing up an opportunity to show off #their# skill.',
-		'#they.capitalize# #is# always #emotion#, often — or especially — when the situation doesn\'t call for it.',
+		'#they.capitalize# #is# always #emotion#, often, or especially, when the situation doesn\'t call for it.',
 		'#they.capitalize# #is# #slow# to trust',
 		'#they.capitalize# think#s# #their# #externalTrait# makes #them# seem #virtue#.',
 		'#they.capitalize# #is# #proud# of #their# #externalTrait#.',

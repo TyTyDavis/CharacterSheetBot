@@ -70,8 +70,8 @@ class Elf(Race):
 	skills = ["Perception"]
 	traits = [
 		"Darkvision: 60 feet", 
-		"Fey Ancestry: Advantage on saving throws against beingt charmed, magic cant put you to sleep",
-		"Trance: Elves dont need to sleep,  insrtead meditating for 4 hours",
+		"Fey Ancestry: Advantage on saving throws against being charmed, magic cant put you to sleep",
+		"Trance: Elves dont need to sleep,  instead meditating for 4 hours",
 		]
 			
 class HighElf(Elf):
