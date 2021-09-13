@@ -2,10 +2,10 @@ import twitter
 import Character
 ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
 
-api = twitter.Api(consumer_key="cSJeAfgqlrapOZmxwuXh7QWxf",
-                  consumer_secret="IuTEJKzpjrRVCXS59jZSIdjXovU6iIuyJeIwoiGw6aBL3r5WbE",
-                  access_token_key="1237052091929178122-Xl6B9gnoV4c8z0ZGPBhtPO6yQKzX7c",
-                  access_token_secret="hPjYQ0L0e08QfPdm6MgPgwSVEziGpmOSgIevzMlD8Cr24")
+api = twitter.Api(consumer_key="xxxxxxxxxx",
+                  consumer_secret="xxxxxxxxxxxxxxxx",
+                  access_token_key="xxxxxxxxxxx",
+                  access_token_secret="xxxxxxxxxxxxxx")
 				  
 
 def postSheet(char):
