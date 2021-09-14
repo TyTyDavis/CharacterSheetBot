@@ -1,4 +1,4 @@
-<h1>Charactger generation</h1>
+<h1>Characther generation</h1>
 <h2>Names:</h2>
 <p>Names are generated using this <a href="https://github.com/Kroket93/Fantasy-Name-Generator-python-script-">name generator</a>, with some tweaks made to the name list, and more tweaks to come.
 <p>There is a random chance that a character might receive a silly name, in which case last names will be pulled from a list of silly last names, and first names will be pulled from a list of more common American names, sourced from the Social Security Administration. Silly characters also have class and race chosen without consideration of relevant ability scores. At this point, pronouns are chosen for the character, to be used by Tracery later.
