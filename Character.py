@@ -32,7 +32,7 @@ martialWeapons = [
 	weapons.Warhammer(), 
 	weapons.Whip()
 	]
-martialRangedWeapons = [weapons.Longbow(), Blowgun(), HandCrossbow(), HeavyCrossbow(), Longbow()]
+martialRangedWeapons = [weapons.Longbow(), weapons.Blowgun(), weapons.HandCrossbow(), weapons.HeavyCrossbow(), weapons.Longbow()]
 simpleWeapons = [
 	weapons.Club(), 
 	weapons.Dagger(), 
@@ -41,7 +41,7 @@ simpleWeapons = [
 	weapons.Mace(), weapons.Quarterstaff(), 
 	weapons.Sickle(), 
 	weapons.Spear()]
-simpleRangedWeapons = [weapons.Dart(), LightCrossbow(), Shortbow()]
+simpleRangedWeapons = [weapons.Dart(), weapons.LightCrossbow(), weapons.Shortbow()]
 lightArmor = [
 	armors.Padded(), 
 	armors.Leather(), 

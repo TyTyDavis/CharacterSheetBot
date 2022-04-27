@@ -18,9 +18,7 @@ import time
 import os
 ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
 
-print('SheetBot is live!')
-#def job():
-#function to generate new character and post it
+print('SheetBot is working')
 char = Character()
 img = Image.open(os.path.join(ROOT_DIR, "static", "blankSheet.png"))
 char.setAbilities()
@@ -67,12 +65,3 @@ img.save(os.path.join(ROOT_DIR, "static", "newSheet.png"))
 twitterBot.postSheet(char)
 print('new character posted!')
 img.close()
-
-
-
-#schedule tweet every hour at X:30
-#schedule.every().hour.at(":30").do(job)
-
-#while True:
- #   schedule.run_pending()
-  #  time.sleep(1)
