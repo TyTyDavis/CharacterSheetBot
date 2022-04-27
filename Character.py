@@ -147,12 +147,12 @@ class Character:
 	def setName(self):
 		firstName = None
 		LastName = None
-		maleNames = os.path.join(ROOT_DIR, "first_name_male.txt")
-		sillyMaleNames = os.path.join(ROOT_DIR, "silly_name_male.txt")
-		femaleNames = os.path.join(ROOT_DIR, "first_name_female.txt")
-		sillyFemaleNames = os.path.join(ROOT_DIR, "silly_name_female.txt")
-		lastNames = os.path.join(ROOT_DIR, "last_name.txt")
-		sillyLastNames = os.path.join(ROOT_DIR, "silly_last_names.txt")
+		maleNames = os.path.join(ROOT_DIR, "static", "first_name_male.txt")
+		sillyMaleNames = os.path.join(ROOT_DIR, "static", "silly_name_male.txt")
+		femaleNames = os.path.join(ROOT_DIR, "Static", "first_name_female.txt")
+		sillyFemaleNames = os.path.join(ROOT_DIR, "static", "silly_name_female.txt")
+		lastNames = os.path.join(ROOT_DIR, "static", "last_name.txt")
+		sillyLastNames = os.path.join(ROOT_DIR, "static", "silly_last_names.txt")
 		if self.gender == "M":
 			firstName = maleNames
 			flavorText.rules['they'] = "he"

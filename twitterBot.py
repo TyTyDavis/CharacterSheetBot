@@ -9,4 +9,4 @@ api = twitter.Api(consumer_key="xxxxxxxxxx",
 				  
 
 def postSheet(char):
-	api.PostUpdate(char.name + ", " +char.race.name + " " + char.characterClass.name, media=os.path.join(ROOT_DIR, "newSheet.png"))
+	api.PostUpdate(char.name + ", " +char.race.name + " " + char.characterClass.name, media=os.path.join(ROOT_DIR, "static", "newSheet.png"))

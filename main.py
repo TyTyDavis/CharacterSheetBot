@@ -22,7 +22,7 @@ print('SheetBot is live!')
 #def job():
 #function to generate new character and post it
 char = Character()
-img = Image.open(os.path.join(ROOT_DIR, "blankSheet.png"))
+img = Image.open(os.path.join(ROOT_DIR, "static", "blankSheet.png"))
 char.setAbilities()
 char.setClass()
 char.setName()
@@ -61,7 +61,7 @@ writer.writeBackground(img, char)
 writer.writeProficiencies(img, char)
 writer.writeTraits(img, char)
 writer.writeFlavor(img, char)
-img.save(os.path.join(ROOT_DIR, "newSheet.png"))
+img.save(os.path.join(ROOT_DIR, "static", "newSheet.png"))
 
 #post to twitter
 twitterBot.postSheet(char)

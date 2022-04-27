@@ -19,7 +19,7 @@ ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
 
 #generate character data
 char = Character()
-img = Image.open(os.path.join(ROOT_DIR, "blankSheet.png"))
+img = Image.open(os.path.join(ROOT_DIR, "static", "blankSheet.png"))
 char.setAbilities()
 char.setClass()
 #char.silly = True
@@ -59,7 +59,7 @@ writer.writeBackground(img, char)
 writer.writeProficiencies(img, char)
 writer.writeTraits(img, char)
 writer.writeFlavor(img, char)
-img.save(os.path.join(ROOT_DIR, "newSheet.png"))
+img.save(os.path.join(ROOT_DIR, "static", "newSheet.png"))
 img.close()
 #post to twitter
 #twitterBot.postSheet(char)

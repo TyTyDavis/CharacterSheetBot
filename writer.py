@@ -1,10 +1,11 @@
+import os
 from PIL import Image
 from PIL import ImageFont
 from PIL import ImageDraw
 import textwrap
 ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
 
-fontFile = os.path.join(ROOT_DIR, "Verdana.ttf")
+fontFile = os.path.join(ROOT_DIR, "static", "Verdana.ttf")
 
 def abilityBonus(score):
 	if score > 5 and score < 8:
